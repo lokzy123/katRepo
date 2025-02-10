@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_Trains</name>
+   <tag></tag>
+   <elementGuidId>80251920-533b-4625-8db9-ba5a449e80e1</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='SW']/div/div[2]/div/div/nav/ul/li[5]/span/a/span[2]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>li.menu_Trains > span > a.headerIcons.makeFlex.hrtlCenter.column > span.headerIconTextAlignment.chNavText.darkGreyText</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=link[name=&quot;Trains&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>807b95e9-3e91-4e1d-ad35-8b543523ee75</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>headerIconTextAlignment chNavText darkGreyText</value>
+      <webElementGuid>4d7f97a1-40a1-45e5-b380-a830d60996e2</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value> Trains </value>
+      <webElementGuid>dc653581-7d3f-46cc-8853-ebfad6c0b19c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;SW&quot;)/div[@class=&quot;landingContainer eng&quot;]/div[@class=&quot;headerOuter&quot;]/div[@class=&quot;chHeaderWrapper navOnly&quot;]/div[@class=&quot;chHeaderContainer&quot;]/nav[1]/ul[@class=&quot;makeFlex font12 headerIconsGap&quot;]/li[@class=&quot;menu_Trains&quot;]/span[1]/a[@class=&quot;headerIcons makeFlex hrtlCenter column&quot;]/span[@class=&quot;headerIconTextAlignment chNavText darkGreyText&quot;]</value>
+      <webElementGuid>5417d603-6cce-48c8-927e-eddffb10ae0b</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='SW']/div/div[2]/div/div/nav/ul/li[5]/span/a/span[2]</value>
+      <webElementGuid>8f9c1ee2-212d-4261-bbe9-1a7a5c73033c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Trains']/parent::*</value>
+      <webElementGuid>0d1675cd-7b13-4a21-851e-7c9966fbef6f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li[5]/span/a/span[2]</value>
+      <webElementGuid>bb6c5660-355f-49d3-a76f-0e0fb422b2fa</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = ' Trains ' or . = ' Trains ')]</value>
+      <webElementGuid>b1b78bfd-f67a-496e-b86b-518fc650bd51</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
