@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Login_TestSuite" time="0.615" tests="0" failures="0" errors="0">
+   <testsuite name="Login_TestSuite" tests="0" failures="0" errors="0" time="0.615" skipped="0" timestamp="11-02-2025T01:23:40" hostname="lokeshguppta - localhost" id="Test Suites/Login_TestSuite">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform"/>
+         <property name="logFolder" value="/Users/lokeshguppta/Katalon Studio/LoginTest/katRepo/Reports/20250211_012330/Login_TestSuite/20250211_012335"/>
+         <property name="logFiles" value="/Users/lokeshguppta/Katalon Studio/LoginTest/katRepo/Reports/20250211_012330/Login_TestSuite/20250211_012335/execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="lokeshguppta - localhost"/>
+         <property name="hostAddress" value="127.0.0.1"/>
+         <property name="os" value="Mac OS X 64bit"/>
+         <property name="katalonVersion" value="10.1.0.223"/>
+      </properties>
+      <system-out><![CDATA[11-02-2025T01:23:40 - [TEST_SUITE][PASSED] - Login_TestSuite: null]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>
