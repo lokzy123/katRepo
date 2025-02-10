@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Login_TestSuite" time="209.685" tests="1" failures="0" errors="0">
+   <testsuite name="Login_TestSuite" tests="1" failures="0" errors="0" time="209.685" skipped="0" timestamp="11-02-2025T01:29:31" hostname="lokeshguppta - localhost" id="Test Suites/Login_TestSuite">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform"/>
+         <property name="logFolder" value="/Users/lokeshguppta/Katalon Studio/LoginTest/katRepo/Reports/20250211_012921/Login_TestSuite/20250211_012926"/>
+         <property name="logFiles" value="/Users/lokeshguppta/Katalon Studio/LoginTest/katRepo/Reports/20250211_012921/Login_TestSuite/20250211_012926/execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="lokeshguppta - localhost"/>
+         <property name="os" value="Mac OS X 64bit"/>
+         <property name="katalonVersion" value="10.1.0.223"/>
+         <property name="browser" value="Chrome 132.0.6834.160"/>
+         <property name="hostAddress" value="127.0.0.1"/>
+         <property name="sessionId" value="6be8914a2800e42487dcd25bda0199a5"/>
+         <property name="seleniumVersion" value="4.22.0"/>
+         <property name="proxyInformation" value="ProxyInformation { proxyOption=NO_PROXY, proxyServerType=HTTP, username=, password=********, proxyServerAddress=, proxyServerPort=0, executionList=&quot;&quot;, isApplyToDesiredCapabilities=true }"/>
+         <property name="platform" value="Mac OS X"/>
+      </properties>
+      <testcase name="Test Cases/Login" time="209.453" classname="Test Cases/Login" status="PASSED">
+         <system-out><![CDATA[11-02-2025T01:29:31 - [TEST_CASE][PASSED] - Test Cases/Login: Test Cases/Login
+
+11-02-2025T01:29:31 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+11-02-2025T01:29:32 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+11-02-2025T01:29:32 - [MESSAGE][INFO] - Action delay is set to 0 milliseconds
+
+11-02-2025T01:29:45 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+11-02-2025T01:29:45 - [TEST_STEP][PASSED] - navigateToUrl("https://www.makemytrip.com/"): Navigate to 'https://www.makemytrip.com/' successfully
+
+11-02-2025T01:30:39 - [MESSAGE][PASSED] - Navigate to 'https://www.makemytrip.com/' successfully
+
+11-02-2025T01:30:39 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_ENG_commonModal__close")): Object: 'Object Repository/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_ENG_commonModal__close' is clicked on
+
+11-02-2025T01:31:46 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_ENG_commonModal__close' is clicked on
+
+11-02-2025T01:31:46 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_Hotels")): Object: 'Object Repository/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_Hotels' is clicked on
+
+11-02-2025T01:32:04 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_Hotels' is clicked on
+
+11-02-2025T01:32:04 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_MakeMyTrip.com Save upto 60 on Hotel B_affcea/span_Homestays  Villas")): Object: 'Object Repository/Page_MakeMyTrip.com Save upto 60 on Hotel B_affcea/span_Homestays  Villas' is clicked on
+
+11-02-2025T01:32:17 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_MakeMyTrip.com Save upto 60 on Hotel B_affcea/span_Homestays  Villas' is clicked on
+
+11-02-2025T01:32:17 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_Holiday Packages")): Object: 'Object Repository/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_Holiday Packages' is clicked on
+
+11-02-2025T01:32:22 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_Holiday Packages' is clicked on
+
+11-02-2025T01:32:22 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Holiday Packages, Indian Holidays, Hon_9f5851/span_Trains")): Object: 'Object Repository/Page_Holiday Packages, Indian Holidays, Hon_9f5851/span_Trains' is clicked on
+
+11-02-2025T01:32:43 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Holiday Packages, Indian Holidays, Hon_9f5851/span_Trains' is clicked on
+
+11-02-2025T01:32:43 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Online Train Ticket Booking, IRCTC Tic_07822b/span_Buses")): Object: 'Object Repository/Page_Online Train Ticket Booking, IRCTC Tic_07822b/span_Buses' is clicked on
+
+11-02-2025T01:32:52 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Online Train Ticket Booking, IRCTC Tic_07822b/span_Buses' is clicked on
+
+11-02-2025T01:32:52 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Online Bus Ticket Booking, Book Confir_a0abd1/span_Cabs")): Object: 'Object Repository/Page_Online Bus Ticket Booking, Book Confir_a0abd1/span_Cabs' is clicked on
+
+11-02-2025T01:32:56 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Online Bus Ticket Booking, Book Confir_a0abd1/span_Cabs' is clicked on
+
+11-02-2025T01:32:56 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Online Cab Booking - Book Outstation C_1a3eba/span_Forex Card  Currency")): Object: 'Object Repository/Page_Online Cab Booking - Book Outstation C_1a3eba/span_Forex Card  Currency' is clicked on
+
+11-02-2025T01:33:01 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Online Cab Booking - Book Outstation C_1a3eba/span_Forex Card  Currency' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[11-02-2025T01:29:31 - [TEST_SUITE][PASSED] - Login_TestSuite: Test Cases/Login]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>
