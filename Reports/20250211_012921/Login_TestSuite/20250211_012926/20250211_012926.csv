@@ -1,0 +1,14 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+Login_TestSuite,Chrome 132.0.6834.160,,,11-02-2025 01:29:31,11-02-2025 01:33:01,3m - 29.685s,PASSED
+,,,,,,,
+Test Cases/Login,Chrome 132.0.6834.160,,,11-02-2025 01:29:31,11-02-2025 01:33:01,3m - 29.453s,PASSED
+"openBrowser("""")",Chrome 132.0.6834.160,,,11-02-2025 01:29:31,11-02-2025 01:29:45,13.171s,PASSED
+"navigateToUrl(""https://www.makemytrip.com/"")",Chrome 132.0.6834.160,,,11-02-2025 01:29:45,11-02-2025 01:30:39,54.351s,PASSED
+"click(findTestObject(""Object Repository/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_ENG_commonModal__close""))",Chrome 132.0.6834.160,,,11-02-2025 01:30:39,11-02-2025 01:31:46,1m - 7.491s,PASSED
+"click(findTestObject(""Object Repository/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_Hotels""))",Chrome 132.0.6834.160,,,11-02-2025 01:31:46,11-02-2025 01:32:04,17.535s,PASSED
+"click(findTestObject(""Object Repository/Page_MakeMyTrip.com Save upto 60 on Hotel B_affcea/span_Homestays  Villas""))",Chrome 132.0.6834.160,,,11-02-2025 01:32:04,11-02-2025 01:32:17,13.124s,PASSED
+"click(findTestObject(""Object Repository/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_Holiday Packages""))",Chrome 132.0.6834.160,,,11-02-2025 01:32:17,11-02-2025 01:32:22,5.153s,PASSED
+"click(findTestObject(""Object Repository/Page_Holiday Packages, Indian Holidays, Hon_9f5851/span_Trains""))",Chrome 132.0.6834.160,,,11-02-2025 01:32:22,11-02-2025 01:32:43,21.209s,PASSED
+"click(findTestObject(""Object Repository/Page_Online Train Ticket Booking, IRCTC Tic_07822b/span_Buses""))",Chrome 132.0.6834.160,,,11-02-2025 01:32:43,11-02-2025 01:32:52,8.289s,PASSED
+"click(findTestObject(""Object Repository/Page_Online Bus Ticket Booking, Book Confir_a0abd1/span_Cabs""))",Chrome 132.0.6834.160,,,11-02-2025 01:32:52,11-02-2025 01:32:56,3.875s,PASSED
+"click(findTestObject(""Object Repository/Page_Online Cab Booking - Book Outstation C_1a3eba/span_Forex Card  Currency""))",Chrome 132.0.6834.160,,,11-02-2025 01:32:56,11-02-2025 01:33:01,4.937s,PASSED
