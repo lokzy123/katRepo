@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description></description>
+   <description>desc added</description>
    <name>New Test Case</name>
    <tag></tag>
    <comment></comment>
