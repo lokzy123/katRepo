@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>check trigger from push</description>
-   <name>Login</name>
+   <description>desc added</description>
+   <name>New Test Case</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>472df177-f44f-43a0-953a-eea81545e2ec</testCaseGuid>
+   <testCaseGuid>ad0b6ab9-294c-4f0e-bffc-06e52b24a5d6</testCaseGuid>
 </TestCaseEntity>

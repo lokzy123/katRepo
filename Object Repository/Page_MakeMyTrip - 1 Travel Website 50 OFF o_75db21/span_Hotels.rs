@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_Hotels</name>
+   <tag></tag>
+   <elementGuidId>33c36d51-1a1f-4877-8766-46121eee79ae</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='SW']/div/div[2]/div/div/nav/ul/li[2]/span/a/span[2]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>li.menu_Hotels > span > a.headerIcons.makeFlex.hrtlCenter.column > span.headerIconTextAlignment.chNavText.darkGreyText</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=link[name=&quot;Hotels&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>e2300cb3-b017-486e-b5c0-108a391fed81</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>headerIconTextAlignment chNavText darkGreyText</value>
+      <webElementGuid>ec4fb4c6-0d0e-4ed2-a457-df62221db247</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value> Hotels </value>
+      <webElementGuid>6ece719c-be85-415e-9ea3-a78a59c1d2cb</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;SW&quot;)/div[@class=&quot;landingContainer eng&quot;]/div[@class=&quot;headerOuter&quot;]/div[@class=&quot;chHeaderWrapper navOnly&quot;]/div[@class=&quot;chHeaderContainer&quot;]/nav[1]/ul[@class=&quot;makeFlex font12 headerIconsGap&quot;]/li[@class=&quot;menu_Hotels&quot;]/span[1]/a[@class=&quot;headerIcons makeFlex hrtlCenter column&quot;]/span[@class=&quot;headerIconTextAlignment chNavText darkGreyText&quot;]</value>
+      <webElementGuid>29ccba4a-f3fb-4fb7-9c86-5847096680eb</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='SW']/div/div[2]/div/div/nav/ul/li[2]/span/a/span[2]</value>
+      <webElementGuid>666e9d2d-a6b7-4380-adba-84fb72c9d509</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Hotels']/parent::*</value>
+      <webElementGuid>9e8e5583-f55f-4f94-b66c-bab8f98919f2</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li[2]/span/a/span[2]</value>
+      <webElementGuid>ec335e4c-d261-4ef7-9871-38bf20ab3c1c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = ' Hotels ' or . = ' Hotels ')]</value>
+      <webElementGuid>2e6bf167-805d-4dd4-a934-ef5719ced0fa</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
