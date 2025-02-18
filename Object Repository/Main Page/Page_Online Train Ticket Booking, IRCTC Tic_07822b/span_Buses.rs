@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_Buses</name>
+   <tag></tag>
+   <elementGuidId>be726f93-63b2-4e4b-b4a1-1933005a2cb5</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='SW']/div/div[2]/div/div/nav/ul/li[6]/span/a/span[2]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>li.menu_Buses > span > a.headerIcons.makeFlex.hrtlCenter.column > span.headerIconTextAlignment.chNavText.darkGreyText</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=link[name=&quot;Buses&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>e161eb4a-d531-47cd-b10c-4fc54ca4625f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>headerIconTextAlignment chNavText darkGreyText</value>
+      <webElementGuid>b78441c0-cc90-4870-b7ea-7bad771c2d6e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value> Buses </value>
+      <webElementGuid>4dbb76b3-0dd4-40f3-a72a-a03c4c042c34</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;SW&quot;)/div[@class=&quot;landingContainer eng&quot;]/div[@class=&quot;headerOuter&quot;]/div[@class=&quot;chHeaderWrapper navOnly&quot;]/div[@class=&quot;chHeaderContainer&quot;]/nav[1]/ul[@class=&quot;makeFlex font12 headerIconsGap&quot;]/li[@class=&quot;menu_Buses&quot;]/span[1]/a[@class=&quot;headerIcons makeFlex hrtlCenter column&quot;]/span[@class=&quot;headerIconTextAlignment chNavText darkGreyText&quot;]</value>
+      <webElementGuid>43d39349-1c43-40bf-9b25-0cc2c32f1731</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='SW']/div/div[2]/div/div/nav/ul/li[6]/span/a/span[2]</value>
+      <webElementGuid>ff208c74-6c18-4449-844b-94790c0b21cc</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Buses']/parent::*</value>
+      <webElementGuid>c43fbe48-08f1-49ec-9936-37f9fad181f1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li[6]/span/a/span[2]</value>
+      <webElementGuid>0eba84d3-79a4-4bd6-a74e-5ca7ac0bac08</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = ' Buses ' or . = ' Buses ')]</value>
+      <webElementGuid>7117d52b-eba7-41ac-beb9-daa8a96723f8</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

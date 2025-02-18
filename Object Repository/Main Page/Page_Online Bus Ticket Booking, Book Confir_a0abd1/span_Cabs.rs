@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_Cabs</name>
+   <tag></tag>
+   <elementGuidId>7c534949-3f3d-4f3f-b6e9-4bfb0aeebc16</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='SW']/div/div[2]/div/div/nav/ul/li[7]/span/a/span[2]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>li.menu_Cabs > span > a.headerIcons.makeFlex.hrtlCenter.column > span.headerIconTextAlignment.chNavText.darkGreyText</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=link[name=&quot;Cabs&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>1403a3c8-fd93-49d8-97ea-0e87dbdaf73b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>headerIconTextAlignment chNavText darkGreyText</value>
+      <webElementGuid>98f14737-c80b-47f1-97f3-08c9eff33622</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value> Cabs </value>
+      <webElementGuid>82735071-ebda-4c9e-ba64-f270a98ba46e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;SW&quot;)/div[@class=&quot;landingContainer eng&quot;]/div[@class=&quot;headerOuter&quot;]/div[@class=&quot;chHeaderWrapper navOnly&quot;]/div[@class=&quot;chHeaderContainer&quot;]/nav[1]/ul[@class=&quot;makeFlex font12 headerIconsGap&quot;]/li[@class=&quot;menu_Cabs&quot;]/span[1]/a[@class=&quot;headerIcons makeFlex hrtlCenter column&quot;]/span[@class=&quot;headerIconTextAlignment chNavText darkGreyText&quot;]</value>
+      <webElementGuid>4fb6b5a7-7e26-4cc8-9cd7-773bcc3013aa</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='SW']/div/div[2]/div/div/nav/ul/li[7]/span/a/span[2]</value>
+      <webElementGuid>7bb140f9-2591-4aa4-a67f-b56b49140f4b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Cabs']/parent::*</value>
+      <webElementGuid>2c45c55f-411a-4ecd-9255-061e135c430a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li[7]/span/a/span[2]</value>
+      <webElementGuid>b195c62b-ffec-41aa-ae4b-5d4b02758e4f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = ' Cabs ' or . = ' Cabs ')]</value>
+      <webElementGuid>cd88682c-49c6-4549-aa33-e479c499d1e4</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
