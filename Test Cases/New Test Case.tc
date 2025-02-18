@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>desc added</description>
+   <description>desc added
+main branch commit</description>
    <name>New Test Case</name>
    <tag></tag>
    <comment></comment>
