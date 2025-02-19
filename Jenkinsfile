@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 script{
-                def commitMessage = sh(script: 'git log -1 --pretty=%B',returnStdout: true).trim()
+                def commitMessage = sh(script: 'git log -1 --pretty=%s',returnStdout: true).trim()
                 echo "Commit message: ${commitMessage}"
                 }
                 echo "Building the project on branch: ${env.BRANCH_NAME}"
