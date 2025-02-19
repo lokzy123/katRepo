@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building the project on branch: ${env.BRANCH_NAME}"
-                cho "Parameter 1 : ${params.parameter1}"
+                echo "Parameter 1 : ${params.parameter1}"
                 // Add build steps here (e.g., Maven, Gradle)
                 sh 'echo "Building...Success"'
             }
