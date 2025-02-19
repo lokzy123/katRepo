@@ -10,10 +10,11 @@ pipeline {
 				checkout scm
 			}
 		}
-        stage('Print commint messgae') {
+        stage('Print commit messgae') {
             steps {
                 script{
-                def commitMessage = sh(script: 'git log -1 --pretty=%s',returnStdout: true).trim()
+		def commitHash = sh(script: 'git rev-parse HEAD^2',returnStdout: true).trim()
+                def commitMessage = sh(script: 'git log -1 --pretty=%B ${commitHash}',returnStdout: true).trim()
                 echo "Commit message: ${commitMessage}"
                 }
                 echo "Building the project on branch: ${env.BRANCH_NAME}"
