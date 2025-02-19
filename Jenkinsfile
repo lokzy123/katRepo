@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string(name: '"parameter1', defaultValue: 'defaultValue1', description: 'Parameter 1 for the webhook')
+        string(name: 'parameter1', defaultValue: 'defaultValue1', description: 'Parameter 1 for the webhook')
         
     }
     stages {
