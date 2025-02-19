@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo "Building the project on branch: ${env.BRANCH_NAME}"
                 // Add build steps here (e.g., Maven, Gradle)
-                sh 'echo "Building..."'
+                sh 'echo "Building...Success"'
             }
         }
         stage('Test') {
