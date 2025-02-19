@@ -1,9 +1,14 @@
 pipeline {
     agent any
+    parameters {
+        string(name: '"parameter1', defaultValue: 'defaultValue1', description: 'Parameter 1 for the webhook')
+        
+    }
     stages {
         stage('Build') {
             steps {
                 echo "Building the project on branch: ${env.BRANCH_NAME}"
+                cho "Parameter 1 : ${params.parameter1}"
                 // Add build steps here (e.g., Maven, Gradle)
                 sh 'echo "Building...Success"'
             }
