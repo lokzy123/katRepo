@@ -5,7 +5,12 @@ pipeline {
         
     }
     stages {
-        stage('Build') {
+		stage('Checkout'){
+			steps{
+				checkout scm
+			}
+		}
+        stage('Print commint messgae') {
             steps {
                 script{
                 def commitMessage = sh(script: 'git log -1 --pretty=%s',returnStdout: true).trim()
