@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo "Running tests for branch: ${env.BRANCH_NAME}"
                 // Add test steps here (e.g., running unit tests)
-                sh 'echo "Running Tests..."'
+                sh 'echo "Running Tests...Success"'
             }
         }
     }
