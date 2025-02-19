@@ -7,6 +7,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                script{
+                def commitMessage = sh(script: 'git log -1 --pretty=%B',returnStdout: true).trim()
+                echo "Commit message: ${commitMessage}"
+                }
                 echo "Building the project on branch: ${env.BRANCH_NAME}"
                 echo "Parameter 1 : ${params.parameter1}"
                 // Add build steps here (e.g., Maven, Gradle)
