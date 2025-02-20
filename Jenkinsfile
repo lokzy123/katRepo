@@ -1,14 +1,5 @@
 pipeline {
     agent any
-	triggers {
-        // Trigger the pipeline when the webhook is received
-        genericWebhookTrigger(
-            genericVariables: [
-                [key: 'COMMENT', value: '$.comment.body'],
-                [key: 'PR_NUMBER', value: '$.pull_request.number']
-            ]
-        )
-    }
     parameters {
         string(name: 'parameter1', defaultValue: 'defaultValue1', description: 'Parameter 1 for the webhook')
         
@@ -22,10 +13,9 @@ pipeline {
                 echo "Commit message: ${commitMessage}"
                 }
                 echo "Building the project on branch: ${env.BRANCH_NAME}"
+				echo "Comment Body: ${env.COMMENT_BODY}"
+				echo "Description PR : ${env.PR_DESCRIPTION}"
                 echo "Parameter 1 : ${params.parameter1}"
-		def comment = COMMENT
-                def prNumber = PR_NUMBER
-		echo "Received comment: ${comment} from PR number: ${prNumber}"
 
                 // Add build steps here (e.g., Maven, Gradle)
                 sh 'echo "Building...Success"'
