@@ -1,27 +1,54 @@
 pipeline {
     agent any
+
     stages {
-        stage('Test') {
+        stage('Receive Webhook Payload') {
             steps {
-				scripts{
-					if(true) {
-						executeKatalon executeArgs: '-projectPath="/Users/lokeshguppta/Katalon Studio/LoginTest/katRepo/katRepoGit.prj" -retry=0 -testSuitePath="Test Suites/Login_TestSuite" -browserType="Chrome" -executionProfile="default" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.1.0', x11Display: '', xvfbConfiguration: ''
-						
-						echo "Running tests for branch: ${env.BRANCH_NAME}"
-					}
-					
-				}
-                // Add test steps here (e.g., running unit tests)
-                
-		    	}
-		    }
-		    
-                
-		  
+                script {
+                    // Access the webhook payload
+                    def payload = readJSON text: env.GITHUB_PAYLOAD // Assuming GitHub webhook
+                    echo "Received webhook payload: ${payload}"
+
+                    // Example: Access specific fields from the payload
+                    def repositoryName = payload.repository.name
+                    def commitMessage = payload.head_commit.message
+
+                    echo "Repository: ${repositoryName}"
+                    echo "Commit Message: ${commitMessage}"
+                }
             }
+        }
+
+        stage('Checkout') {
+            steps {
+                // Checkout your repository
+               // git url: 'https://your-repo-url.git', branch: 'main'
+            }
+        }
+
+        stage('Run Katalon Tests') {
+            steps {
+                script {
+                    // Define the path to Katalon Studio executable and your project
+                    //def katalonPath = '/path/to/Katalon Studio/Katalon'
+                   // def projectPath = '/path/to/your/katalon/project'
+                    //def testCasePath = 'Test Cases/YourTestCase' // Adjust this to your test case path
+
+                    // Command to execute Katalon tests
+                   // def command = "${katalonPath} -noSplash -runMode=console -projectPath=\"${projectPath}\" -testSuitePath=\"${testCasePath}\" -executionProfile=default -browserType=Chrome"
+
+                    // Execute the command
+                   // sh command
+                }
+            }
+        }
+    }
+
     post {
         always {
-            echo "Pipeline finished for branch: ${env.BRANCH_NAME}"
+            // Archive test results or perform cleanup
+           // junit '**/Reports/*.xml' // Adjust this to your report path
+            //archiveArtifacts artifacts: 'Reports/**', allowEmptyArchive: true // Archive all reports
         }
     }
 }
