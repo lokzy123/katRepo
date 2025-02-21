@@ -18,30 +18,6 @@ pipeline {
                 }
             }
         }
-
-        stage('Checkout') {
-            steps {
-                // Checkout your repository
-               // git url: 'https://your-repo-url.git', branch: 'main'
-            }
-        }
-
-        stage('Run Katalon Tests') {
-            steps {
-                script {
-                    // Define the path to Katalon Studio executable and your project
-                    //def katalonPath = '/path/to/Katalon Studio/Katalon'
-                   // def projectPath = '/path/to/your/katalon/project'
-                    //def testCasePath = 'Test Cases/YourTestCase' // Adjust this to your test case path
-
-                    // Command to execute Katalon tests
-                   // def command = "${katalonPath} -noSplash -runMode=console -projectPath=\"${projectPath}\" -testSuitePath=\"${testCasePath}\" -executionProfile=default -browserType=Chrome"
-
-                    // Execute the command
-                   // sh command
-                }
-            }
-        }
     }
 
     post {
