@@ -19,12 +19,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            // Archive test results or perform cleanup
-           // junit '**/Reports/*.xml' // Adjust this to your report path
-            //archiveArtifacts artifacts: 'Reports/**', allowEmptyArchive: true // Archive all reports
-        }
-    }
 }
