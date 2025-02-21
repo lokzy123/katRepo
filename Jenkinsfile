@@ -2,21 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Receive Webhook Payload') {
+        stage('Process Webhook') {
             steps {
                 script {
                     // Access the webhook payload
-                    def payload = readJSON text: env.GITHUB_PAYLOAD // Assuming GitHub webhook
-                    echo "Received webhook payload: ${payload}"
+                    def payload = readJSON text: env.GITHUB_PAYLOAD // Adjust based on your webhook provider
+                    echo "Received payload: ${payload}"
 
-                    // Example: Access specific fields from the payload
-                    def repositoryName = payload.repository.name
-                    def commitMessage = payload.head_commit.message
-
-                    echo "Repository: ${repositoryName}"
-                    echo "Commit Message: ${commitMessage}"
+                    // Example: Use data from the payload
+                    def branchName = payload.ref.split('/').last() // Extract branch name
+                    echo "Branch: ${branchName}"
                 }
             }
         }
-    }
 }
