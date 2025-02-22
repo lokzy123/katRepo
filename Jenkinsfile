@@ -5,7 +5,7 @@ pipeline {
         stage('Process Webhook') {
             steps {
                 script {
-                    // Access the webhook payload
+                    // Access the webhook payload and
                     def payload = readJSON text: env.GITHUB_PAYLOAD // Adjust based on your webhook provider
                     echo "Received payload: ${payload}"
 
