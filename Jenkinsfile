@@ -8,6 +8,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                script{
+                     def payload = readJSON text: env.GITHUB_PAYLOAD // Assuming GitHub webhook
+                    echo "Received webhook payload: ${payload}"
+                }
                 echo "Payload Commit Message: ${COMMIT_MESSAGE}"
                 echo "Payload Branch: ${BRANCH_NAME}"
                 // Here you could add more logic to handle the payload as needed
