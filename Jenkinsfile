@@ -1,19 +1,17 @@
 pipeline {
     agent any
-
+    environment {
+        // The webhook data will be available as environment variables
+        COMMIT_MESSAGE = "${env.GITHUB_PAYLOAD_COMMIT_MESSAGE}"
+        BRANCH_NAME = "${env.GITHUB_PAYLOAD_REF}"
+    }
     stages {
-        stage('Process Webhook') {
+        stage('Checkout') {
             steps {
-                script {
-                    // Access the webhook payload and
-                    def payload = readJSON text: env.GITHUB_PAYLOAD // Adjust based on your webhook provider
-                    echo "Received payload: ${payload}"
-
-                    // Example: Use data from the payload
-                    def branchName = payload.ref.split('/').last() // Extract branch name
-                    echo "Branch: ${branchName}"
-                }
+                echo "Payload Commit Message: ${COMMIT_MESSAGE}"
+                echo "Payload Branch: ${BRANCH_NAME}"
+                // Here you could add more logic to handle the payload as needed
             }
         }
-}
+    }
 }
