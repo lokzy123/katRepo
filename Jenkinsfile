@@ -23,7 +23,7 @@ pipeline {
 
 							// Make the HTTP GET request to fetch PR details using httpRequest step
                     def response = httpRequest(
-                        url: apiUrl,
+                        url: prUrl,
                         httpMode: 'GET',
                         customHeaders: [[name: 'Authorization', value: "token ${GITHUB_TOKEN}"]],
                         validResponseCodes: '200'
