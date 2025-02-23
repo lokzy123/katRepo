@@ -9,7 +9,6 @@ pipeline {
         stage('Fetch Pull Request Description') {
             steps {
                 script {
-			import java.net.URL
                     // Check if this is a PR build
                     if (env.CHANGE_ID) {
                         // Prepare the GitHub API URL to fetch PR details
