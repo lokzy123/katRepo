@@ -21,14 +21,16 @@ pipeline {
                                  "${prUrl}"
                             """, returnStdout: true).trim()
 
-							// Make the HTTP GET request to fetch PR details
-							def connection = new URL(prUrl).openConnection() as HttpURLConnection
-							connection.setRequestMethod("GET")
-							connection.setRequestProperty("Authorization", "token ${GITHUB_TOKEN}")
-							connection.connect()
+							// Make the HTTP GET request to fetch PR details using httpRequest step
+                    def response = httpRequest(
+                        url: apiUrl,
+                        httpMode: 'GET',
+                        customHeaders: [[name: 'Authorization', value: "token ${GITHUB_TOKEN}"]],
+                        validResponseCodes: '200'
+                    )
 		
 							// Read the response and parse JSON
-							def response = connection.inputStream.text
+//							def response = connection.inputStream.text
 							// Parse the JSON payload using JsonSlurper
 							def jsonSlurper = new groovy.json.JsonSlurper()
 							def parsedJson = jsonSlurper.parseText(response)
