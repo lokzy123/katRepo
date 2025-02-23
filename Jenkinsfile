@@ -13,18 +13,21 @@ pipeline {
                     // Capture the webhook payload from GitHub (via environment variable)
                     def payload = params.payload  // GitHub webhook payload is passed as 'payload'
 
-                    // Parse the JSON payload (you can modify this depending on the event)
-                    def json = readJSON text: payload
-                    echo "Received GitHub Webhook payload: ${json}"
+                    // Parse the JSON payload using JsonSlurper
+                    def jsonSlurper = new groovy.json.JsonSlurper()
+                    def parsedJson = jsonSlurper.parseText(payload)
+                    
+                    // Log the parsed JSON object for inspection
+                    echo "Received GitHub Webhook payload: ${parsedJson}"
 
-                    // You can now process the payload as needed, for example:
-                    if (json.action == 'opened') {
-                        echo "New issue opened: ${json.issue.title}"
+                    // Example: Check for a GitHub issue event (you can customize this part)
+                    if (parsedJson.action == 'opened') {
+                        echo "New issue opened: ${parsedJson.issue.title}"
                     }
 
-                    // Example of accessing GitHub issue data
-                    def issueTitle = json.issue.title
-                    def issueURL = json.issue.html_url
+                    // Example: Accessing the GitHub issue data
+                    def issueTitle = parsedJson.issue.title
+                    def issueURL = parsedJson.issue.html_url
                     echo "Issue Title: ${issueTitle}"
                     echo "Issue URL: ${issueURL}"
                 }
