@@ -1,45 +1,61 @@
 pipeline {
     agent any
-
     environment {
-        // Define the GitHub webhook event URL
-        GITHUB_TOKEN = 'Github@neww2020'
+        GITHUB_TOKEN = 'Github@neww2020'  // Store GitHub token in Jenkins credentials
+        REPO_OWNER = 'lokzy0105@gmail.com'  // GitHub repository owner/username
+        REPO_NAME = 'katRepo' // GitHub repository name
     }
-
     stages {
-        stage('Receive GitHub Webhook Payload') {
+        stage('Fetch Pull Request Description') {
             steps {
                 script {
-                    // Capture the webhook payload from GitHub (via environment variable)
-                    def payload = params.payload  // GitHub webhook payload is passed as 'payload'
+                    // Check if this is a PR build
+                    if (env.CHANGE_ID) {
+                        // Prepare the GitHub API URL to fetch PR details
+                        def prUrl = "https://api.github.com/repos/${env.REPO_OWNER}/${env.REPO_NAME}/pulls/${env.CHANGE_ID}"
+                        
+                        // Send the GET request to GitHub API
+                        def prResponse = sh(script: """
+                            curl -H "Authorization: token ${env.GITHUB_TOKEN}" \
+                                 -H "Accept: application/vnd.github.v3+json" \
+                                 "${prUrl}"
+                            """, returnStdout: true).trim()
 
-                    // Parse the JSON payload using JsonSlurper
-                    def jsonSlurper = new groovy.json.JsonSlurper()
-                    def parsedJson = jsonSlurper.parseText(payload)
-                    
-                    // Log the parsed JSON object for inspection
-                    echo "Received GitHub Webhook payload: ${parsedJson}"
+							// Make the HTTP GET request to fetch PR details
+							def connection = new URL(prUrl).openConnection() as HttpURLConnection
+							connection.setRequestMethod("GET")
+							connection.setRequestProperty("Authorization", "token ${GITHUB_TOKEN}")
+							connection.connect()
+		
+							// Read the response and parse JSON
+							def response = connection.inputStream.text
+							// Parse the JSON payload using JsonSlurper
+							def jsonSlurper = new groovy.json.JsonSlurper()
+							def parsedJson = jsonSlurper.parseText(response)
+							
+							// Log the parsed JSON object for inspection
+							echo "Received GitHub Webhook payload: ${parsedJson}"
+		
+							// Example: Check for a GitHub issue event (you can customize this part)
+							if (parsedJson.action == 'opened') {
+								echo "New issue opened: ${parsedJson.issue.title}"
+							}
+		
+							// Example: Accessing the GitHub issue data
+							def issueTitle = parsedJson.issue.title
+							def issueURL = parsedJson.issue.html_url
+							echo "Issue Title: ${issueTitle}"
+							echo "Issue URL: ${issueURL}"
+		
+                        // Parse the PR details (using JSON parsing)
+                        //def prJson = readJSON text: prResponse
 
-                    // Example: Check for a GitHub issue event (you can customize this part)
-                    if (parsedJson.action == 'opened') {
-                        echo "New issue opened: ${parsedJson.issue.title}"
+                        // Extract the pull request description
+                        //def prDescription = prJson.body
+                       // echo "Pull Request Description: ${prDescription}"
+                    } else {
+                        echo "This is not a PR build."
                     }
-
-                    // Example: Accessing the GitHub issue data
-                    def issueTitle = parsedJson.issue.title
-                    def issueURL = parsedJson.issue.html_url
-                    echo "Issue Title: ${issueTitle}"
-                    echo "Issue URL: ${issueURL}"
-                }
-            }
-        }
-
-        stage('Process Webhook Data') {
-            steps {
-                script {
-                    // Example of further processing after receiving the webhook data
-                    echo "Processing the webhook data further..."
-                    // You can perform operations based on the GitHub webhook data here
                 }
             }
         }
