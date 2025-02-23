@@ -1,35 +1,42 @@
 pipeline {
     agent any
+
     environment {
-        GITHUB_TOKEN = 'Github@neww2020'  // Store GitHub token in Jenkins credentials
-        REPO_OWNER = 'lokzy0105@gmail.com'  // GitHub repository owner/username
-        REPO_NAME = 'katRepo' // GitHub repository name
+        // Define the GitHub webhook event URL
+        GITHUB_TOKEN = 'Github@neww2020'
     }
+
     stages {
-        stage('Fetch Pull Request Description') {
+        stage('Receive GitHub Webhook Payload') {
             steps {
                 script {
-                    // Check if this is a PR build
-                    if (env.CHANGE_ID) {
-                        // Prepare the GitHub API URL to fetch PR details
-                        def prUrl = "https://api.github.com/repos/${env.REPO_OWNER}/${env.REPO_NAME}/pulls/${env.CHANGE_ID}"
-                        
-                        // Send the GET request to GitHub API
-                        def prResponse = sh(script: """
-                            curl -H "Authorization: token ${env.GITHUB_TOKEN}" \
-                                 -H "Accept: application/vnd.github.v3+json" \
-                                 "${prUrl}"
-                            """, returnStdout: true).trim()
+                    // Capture the webhook payload from GitHub (via environment variable)
+                    def payload = params.payload  // GitHub webhook payload is passed as 'payload'
 
-                        // Parse the PR details (using JSON parsing)
-                        def prJson = readJSON text: prResponse
+                    // Parse the JSON payload (you can modify this depending on the event)
+                    def json = readJSON text: payload
+                    echo "Received GitHub Webhook payload: ${json}"
 
-                        // Extract the pull request description
-                        def prDescription = prJson.body
-                        echo "Pull Request Description: ${prDescription}"
-                    } else {
-                        echo "This is not a PR build."
+                    // You can now process the payload as needed, for example:
+                    if (json.action == 'opened') {
+                        echo "New issue opened: ${json.issue.title}"
                     }
+
+                    // Example of accessing GitHub issue data
+                    def issueTitle = json.issue.title
+                    def issueURL = json.issue.html_url
+                    echo "Issue Title: ${issueTitle}"
+                    echo "Issue URL: ${issueURL}"
+                }
+            }
+        }
+
+        stage('Process Webhook Data') {
+            steps {
+                script {
+                    // Example of further processing after receiving the webhook data
+                    echo "Processing the webhook data further..."
+                    // You can perform operations based on the GitHub webhook data here
                 }
             }
         }
