@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        GITHUB_TOKEN = credentials('Github@neww2020')  // Store GitHub token in Jenkins credentials
+        GITHUB_TOKEN = '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'  // Store GitHub token in Jenkins credentials
         REPO_OWNER = 'lokzy0105@gmail.com'  // GitHub repository owner/username
         REPO_NAME = 'katRepo' // GitHub repository name
     }
