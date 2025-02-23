@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        GITHUB_TOKEN = 'Github@neww2020'  // Store GitHub token in Jenkins credentials
+        GITHUB_TOKEN = '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'  // Store GitHub token in Jenkins credentials
         REPO_OWNER = 'lokzy123'  // GitHub repository owner/username
         REPO_NAME = 'katRepo' // GitHub repository name
     }
@@ -16,7 +16,7 @@ pipeline {
                         
                         // Send the GET request to GitHub API
                         def prResponse = sh(script: """
-                            curl -H "Authorization: token ${env.GITHUB_TOKEN}" \
+                            curl -H "Authorization: Bearer ${env.GITHUB_TOKEN}" \
                                  -H "Accept: application/vnd.github.v3+json" \
                                  "${prUrl}"
                             """, returnStdout: true).trim()
