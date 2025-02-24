@@ -9,7 +9,7 @@ pipeline {
         stage('Fetch Pull Request Description') {
             steps {
                 script {
-                    // Check if this is a PR build env.CHANGE_ID check
+                    // Check if this is a PR build env.CHANGE_ID check the wz
                     if (true) {
                         // Prepare the GitHub API URL to fetch PR details  
                         // def prUrl = "https://api.github.com/repos/${env.REPO_OWNER}/${env.REPO_NAME}/pulls/${env.CHANGE_ID}"
