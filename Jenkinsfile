@@ -14,5 +14,26 @@ pipeline {
                 }
             }
         }
+	stage('Archive Test Results') {
+            steps {
+                // Archive the Katalon test reports as artifacts
+                archiveArtifacts artifacts: 'Katalon_Project/Reports/**/*', allowEmptyArchive: true
+            }
+        }
+
+        stage('Commit and Push Results') {
+            steps {
+                script {
+                    // Optionally commit the test results back to the repository
+                    sh '''
+                    git config --global user.email "your-email@example.com"
+                    git config --global user.name "Jenkins"
+                    git add Katalon_Project/Reports
+                    git commit -m "Add Katalon test results"
+                    git push
+                    '''
+                }
+            }
+        }
     }
 }
