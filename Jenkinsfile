@@ -22,12 +22,12 @@ pipeline {
                             """, returnStdout: true).trim()
 
 							// Make the HTTP GET request to fetch PR details using httpRequest step
-                   //  def response = httpRequest(
-                   //     url: prUrl,
-                   //     httpMode: 'GET',
-                   //     customHeaders: [[name: 'Authorization', value: "token ${GITHUB_TOKEN}"]],
-                   //     validResponseCodes: '200'
-                   // )
+                    def response = httpRequest(
+                       url: prUrl,
+                       httpMode: 'GET',
+                       customHeaders: [[name: 'Authorization', value: "token ${GITHUB_TOKEN}"]],
+                       validResponseCodes: '200'
+                   )
 
 			    // Make the HTTP GET request to fetch PR details
                     // def connection = new URL(prUrl).openConnection() as HttpURLConnection
