@@ -12,15 +12,18 @@ pipeline {
                     // def commitHash = ${env.GIT_COMMIT} // Replace with your desired commit hash
 
                     // // Get the commit message for the specific commit hash
-                    // def commitMessage = sh(script: "git log -1 --pretty=%B ${commitHash}", returnStdout: true).trim()
+                    def commitMessage = sh(script: "git log -1 --pretty=%B ${env.GIT_COMMIT}", returnStdout: true).trim()
 
                     // // Echo the commit message to the console
-                    // echo "Commit Message for ${commitHash}: ${commitMessage}"
+                     echo "Commit Message : ${commitMessage}"
                     }else{
                         echo "PR Title: ${env.CHANGE_TITLE}"
                     echo "Pull request TRIGGERING IS Off"
                         echo "PR Cmmit: ${env.GIT_COMMIT}"
 
+                        def commitMessage = sh(script: "git log -1 --pretty=%B ${env.GIT_COMMIT}", returnStdout: true).trim()
+                        echo "Commit Message : ${commitMessage}"
+                        
                         // Specify the commit hash (for example, a previously known commit hash)
                     // def commitHash = ${env.GIT_COMMIT}   // Replace with your desired commit hash
 
