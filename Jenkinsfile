@@ -11,7 +11,7 @@ pipeline {
                     def prApiUrl = "https://api.github.com/repos/lokzy123/katRepo/pulls?head=lokzy123:${branchName}"
 
                     // Make an API request to GitHub to get pull requests associated with the branch
-                    def response = httpRequest url: prApiUrl, customHeaders: [[name: 'Authorization', value: 'Bearer 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']], acceptType: 'APPLICATION_JSON'
+                    def response = httpRequest url: prApiUrl, customHeaders: [[name: 'Authorization', value: 'token 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']], acceptType: 'APPLICATION_JSON'
 
                     // Parse the response to check if there are any PRs for the branch
                     def prList = readJSON text: response
