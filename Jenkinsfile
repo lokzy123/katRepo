@@ -1,42 +1,31 @@
 pipeline {
     agent any
     stages {
-        stage('Executing Code') {
+        stage('Get PR for Branch') {
             steps {
                 script {
-                    if (env.CHANGE_ID) {
-                        echo "Pull request TRIGGERING IS On"
-                        echo "PR Title: ${env.CHANGE_TITLE}"
-                        echo "PR Cmmit: ${env.GIT_COMMIT}"
-                        // Specify the commit hash (for example, a previously known commit hash)
-                    // def commitHash = ${env.GIT_COMMIT} // Replace with your desired commit hash
+                    // Get the branch name (use BRANCH_NAME or set it as needed)
+                    def branchName = env.BRANCH_NAME
 
-                    // // Get the commit message for the specific commit hash
-                    def commitMessage = sh(script: "git log -1 --pretty=%B ${env.GIT_COMMIT}", returnStdout: true).trim()
+                    // GitHub API URL to get PRs for the branch (head=your-branch-name)
+                    def prApiUrl = "https://api.github.com/repos/lokzy123/katRepo/pulls?head=your-org:${branchName}"
 
-                    // // Echo the commit message to the console
-                     echo "Commit Message : ${commitMessage}"
-                    }else{
-                        echo "PR Title: ${env.CHANGE_TITLE}"
-                    echo "Pull request TRIGGERING IS Off"
-                        echo "PR Cmmit: ${env.GIT_COMMIT}"
+                    // Make an API request to GitHub to get pull requests associated with the branch
+                    def response = httpRequest url: prApiUrl, customHeaders: [[name: 'Authorization', value: 'Bearer Github@neww2020']], acceptType: 'APPLICATION_JSON'
 
-                        def commitMessage = sh(script: "git log -1 --pretty=%B ${env.GIT_COMMIT}", returnStdout: true).trim()
-                        echo "Commit Message : ${commitMessage}"
-                        
-                        // Specify the commit hash (for example, a previously known commit hash)
-                    // def commitHash = ${env.GIT_COMMIT}   // Replace with your desired commit hash
+                    // Parse the response to check if there are any PRs for the branch
+                    def prList = readJSON text: response
 
-                    // // Get the commit message for the specific commit hash
-                    // def commitMessage = sh(script: "git log -1 --pretty=%B ${commitHash}", returnStdout: true).trim()
-
-                    // // Echo the commit message to the console
-                    // echo "Commit Message for ${commitHash}: ${commitMessage}"
-                    }
-
-                    //executeKatalon executeArgs: './katalonc -noSplash -runMode=console -projectPath="/Users/lokeshguppta/Katalon Studio/katRepo/katRepo/katRepoGit.prj" -retry=0 -testSuitePath="Test Suites/Login_TestSuite" -browserType="Chrome" -executionProfile="default" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.1.0', x11Display: '', xvfbConfiguration: ''
+                    if (prList.size() > 0) {
+                        // If PRs exist, echo the first PR title (or process as needed)
+                        def prTitle = prList[0].title
+                        def prUrl = prList[0].html_url
+                        echo "PR for branch ${branchName}: ${prTitle} (${prUrl})"
+                    } else {
+                        echo "No PR found for branch ${branchName}."
                     }
                 }
             }
         }
+    }
 }
