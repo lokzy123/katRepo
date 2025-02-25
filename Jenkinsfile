@@ -8,7 +8,7 @@ pipeline {
                     def branchName = env.BRANCH_NAME
 
                     // GitHub API URL to get PRs for the branch (head=your-branch-name)
-                    def prApiUrl = "https://api.github.com/repos/lokzy123/katRepo/pulls?head=your-org:${branchName}"
+                    def prApiUrl = "https://api.github.com/repos/lokzy123/katRepo/pulls?head=lokzy123:${branchName}"
 
                     // Make an API request to GitHub to get pull requests associated with the branch
                     def response = httpRequest url: prApiUrl, customHeaders: [[name: 'Authorization', value: 'Bearer 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']], acceptType: 'APPLICATION_JSON'
