@@ -6,7 +6,9 @@ pipeline {
                 script {
                     if (env.CHANGE_ID) {
                         echo "Pull request TRIGGERING IS On"
+                        echo "PR Title: ${env.CHANGE_TITLE}"
                     }else{
+                        echo "PR Title: ${env.CHANGE_TITLE}"
                     echo "Pull request TRIGGERING IS Off"
                     }
 
