@@ -33,7 +33,7 @@ pipeline {
                     // Echo the commit message to the console
                     echo "Commit Message for ${commitHash}: ${commitMessage}"
                     
-                    if (commitMessage.equals('Execute Job')) {
+                    if (commitMessage.contains('Execute Job')) {
                         echo "Push step started successfully : ${commitMessage}"
                         
                         // Get the branch name (use BRANCH_NAME or set it as needed)
