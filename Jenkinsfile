@@ -13,12 +13,12 @@ pipeline {
                     // Make an API request to GitHub to get pull requests associated with the branch
                     def response = httpRequest url: prApiUrl, acceptType: 'APPLICATION_JSON'
 
-			// def prJson = readJSON text: response
+			def prJson = readJSON text: response
    //                  // Parse the response to check if there are any PRs for the branch
    //                  def jsonSlurper = new groovy.json.JsonSlurper()
 			// def parsedJson = jsonSlurper.parseText(prJson)
 
-                    echo "Parsed Json : ${response}"
+                    echo "Parsed Json : ${prJson}"
                     // def prList = readJSON text: response
 
                     // if (prList.size() > 0) {
