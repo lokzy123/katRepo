@@ -43,7 +43,7 @@ pipeline {
                             "body": "${commentBody}"
                         }""",
                         customHeaders: [
-                            [name: 'Authorization', value: Bearer Github@neww2020"]
+                            [name: 'Authorization', value: "Bearer Github@neww2020"]
                         ]
                     )
 
