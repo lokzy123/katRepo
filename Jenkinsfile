@@ -31,7 +31,7 @@ pipeline {
 			echo "Comments URL : ${commenst_Url}"
 
 			 // Comment message to post
-                    def commentBody = '{"body": "This is a comment from Jenkins!"}'
+                    def commentBody = 'This is a comment from Jenkins!'
                     
                     // Make the API request to post the comment on the PR using httpRequest
                     def response_comment = httpRequest(
@@ -39,10 +39,12 @@ pipeline {
                         httpMode: 'POST',
                         contentType: 'APPLICATION_JSON',
 			acceptType: 'APPLICATION_JSON',
-                        headers: [
-                           	[name: 'Authorization', value: "Bearer Github@neww2020"]
-                        ],
-                        requestBody: commentBody
+			equestBody: """{
+                            "body": "${commentBody}"
+                        }""",
+                        customHeaders: [
+                            [name: 'Authorization', value: Bearer Github@neww2020"]
+                        ]
                     )
 
 			def responseBody_Cmt = response_comment.content.toString()
