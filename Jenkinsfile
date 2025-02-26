@@ -1,9 +1,5 @@
 pipeline {
     agent any
-	environment {
-    GITHUB_TOKEN = credentials('dab3456d-e50f-42d9-b865-1892fbef3a47')  // Use the token stored in Jenkins credentials
-}
-
     stages {
         stage('Get PR for Branch') {
             steps {
