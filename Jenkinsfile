@@ -39,7 +39,7 @@ pipeline {
                        curl -X POST -H "Authorization: token ${GITHUB_TOKEN}" \
                         -H "Accept: application/vnd.github.v3+json" \
                        ${commenst_Url} \
-                        -d '{"body": "${comment}"}'
+                        -d '{"body": "${commentBody}"}'
                     """, returnStdout: true)
                    echo "response_comment: ${response_comment}"
    //                  def response_comment = httpRequest(
