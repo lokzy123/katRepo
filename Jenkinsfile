@@ -1,12 +1,13 @@
 pipeline {
     agent any
-	environment {
-        GITHUB_TOKEN = credentials('git')  // Directly using the credential ID to access the token
-    }
+	// environment {
+ //        GITHUB_TOKEN = credentials('git')  // Directly using the credential ID to access the token
+ //    }
     stages {
         stage('Get PR for Branch') {
             steps {
                 script {
+			echo "GITHUB_TOKEN: ${env.GITHUB_TOKEN}"
                     // Get the branch name (use BRANCH_NAME or set it as needed) check
                     def branchName = env.BRANCH_NAME
 
