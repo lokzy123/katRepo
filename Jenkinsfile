@@ -45,12 +45,12 @@ pipeline {
                             "body": "${commentBody}"
                         }""",
                         customHeaders: [
-                            [name: 'Authorization', value: "Bearer ${GITHUB_TOKEN}"]
+                            [name: 'Aut horization', value: "Bearer ${GITHUB_TOKEN}"]
                         ]
                     )
 
 			def responseBody_Cmt = response_comment.content.toString()
-		echo "Parsed Json comment: ${prJson}"
+			echo "Parsed Json comment: ${prJson}"
                     echo "Parsed Json : ${prJson}"
                     // def prList = readJSON text: response
 
