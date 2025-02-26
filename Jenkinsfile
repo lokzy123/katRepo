@@ -22,6 +22,9 @@ pipeline {
 
 			def title = prJson.title
 			echo "Title : ${title}"
+			def review_comment_url = prJson.review_comments_url
+			echo "Comments URL : ${review_comment_url}"
+			
                     echo "Parsed Json : ${prJson}"
                     // def prList = readJSON text: response
 
