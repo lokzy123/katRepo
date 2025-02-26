@@ -24,7 +24,20 @@ pipeline {
 			echo "Title : ${title}"
 			def review_comment_url = prJson.review_comments_url
 			echo "Comments URL : ${review_comment_url}"
-			
+
+			 // Comment message to post
+                    def commentBody = '{"body": "This is a comment from Jenkins!"}'
+                    
+                    // Make the API request to post the comment on the PR using httpRequest
+                    def response = httpRequest(
+                        url: review_comment_url,
+                        httpMode: 'POST',
+                        contentType: 'APPLICATION_JSON',
+                        headers: [
+                            [name: 'Accept', value: 'application/vnd.github.v3+json']
+                        ],
+                        requestBody: commentBody
+                    )
                     echo "Parsed Json : ${prJson}"
                     // def prList = readJSON text: response
 
