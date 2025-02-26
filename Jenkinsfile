@@ -40,7 +40,7 @@ pipeline {
                         contentType: 'APPLICATION_JSON',
 			acceptType: 'APPLICATION_JSON',
                         headers: [
-                           	[name: 'Authorization', value: "Bearer ${GITHUB_TOKEN}"]
+                           	[name: 'Authorization', value: "Bearer Github@neww2020"]
                         ],
                         requestBody: commentBody
                     )
