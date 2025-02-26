@@ -23,7 +23,8 @@ pipeline {
 			def title = prJson.title
 			echo "Title : ${title}"
 			def review_comment_url = prJson.review_comments_url
-			echo "Comments URL : ${review_comment_url}"
+			def commenst_Url = review_comment_url[0]
+			echo "Comments URL : ${commenst_Url}"
 
 			 // Comment message to post
                     def commentBody = '{"body": "This is a comment from Jenkins!"}'
