@@ -34,7 +34,8 @@ pipeline {
                         httpMode: 'POST',
                         contentType: 'APPLICATION_JSON',
                         headers: [
-                            [name: 'Accept', value: 'application/vnd.github.v3+json']
+				[name: 'Authorization', value: "Bearer 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"],
+                           	[name: 'Accept', value: 'application/vnd.github.v3+json']
                         ],
                         requestBody: commentBody
                     )
