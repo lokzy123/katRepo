@@ -20,6 +20,8 @@ pipeline {
    //                  def jsonSlurper = new groovy.json.JsonSlurper()
 			// def parsedJson = jsonSlurper.parseText(prJson)
 
+			def title = prJson.title
+			echo "Title : ${title}"
                     echo "Parsed Json : ${prJson}"
                     // def prList = readJSON text: response
 
