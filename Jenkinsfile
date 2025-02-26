@@ -36,22 +36,30 @@ pipeline {
                     // Make the API request to post the comment on the PR using httpRequest
 
 	
-                    def response_comment = httpRequest(
-                        url: commenst_Url,
-                        httpMode: 'POST',
-                        contentType: 'APPLICATION_JSON',
-			acceptType: 'APPLICATION_JSON',
-			requestBody: """{
-                            "body": "${commentBody}"
-                        }""",
-                        customHeaders: [
-                            [name: 'Authorization', value: "Bearer ${env.GITHUB_TOKEN}"]
-                        ]
-                    )
+   //                  def response_comment = httpRequest(
+   //                      url: commenst_Url,
+   //                      httpMode: 'POST',
+   //                      contentType: 'APPLICATION_JSON',
+			// acceptType: 'APPLICATION_JSON',
+			// requestBody: """{
+   //                          "body": "${commentBody}"
+   //                      }""",
+   //                      customHeaders: [
+   //                          [name: 'Authorization', value: "Bearer ${env.GITHUB_TOKEN}"]
+   //                      ]
+   //                  )
+			// Make an API request to post the comment on the PR
+                    sh """
+                        curl -X POST \
+                        -H "Authorization: token ${env.GITHUB_TOKEN}" \
+                        -H "Content-Type: application/json" \
+                        -d '${commentBody}' \
+                        ${commenst_Url}
+                    """
 
-			def responseBody_Cmt = response_comment.content.toString()
-			echo "Parsed Json comment: ${prJson}"
-                    echo "Parsed Json : ${prJson}"
+			// def responseBody_Cmt = response_comment.content.toString()
+			// echo "Parsed Json comment: ${prJson}"
+   //                  echo "Parsed Json : ${prJson}"
                     // def prList = readJSON text: response
 
                     // if (prList.size() > 0) {
