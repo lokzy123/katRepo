@@ -73,7 +73,7 @@ pipeline {
                     def token = GITHUB_CREDENTIALS_PSW
                     
                     // Get the comments URL from the received JSON
-                    def review_comment_url = receivedJsonPayload.comments_url
+                    def review_comment_url = receivedJson.comments_url
                     
                     // In case the review_comment_url has multiple URLs, select the first one
                     def commentUrl = review_comment_url[0]
