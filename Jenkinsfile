@@ -14,13 +14,17 @@ pipeline {
                     def response = httpRequest url: prApiUrl, acceptType: 'APPLICATION_JSON'
 
                     // Parse the response to check if there are any PRs for the branch
-                    def prList = readJSON text: response
+                    def jsonSlurper = new groovy.json.JsonSlurper()
+					def parsedJson = jsonSlurper.parseText(response)
 
-                    if (prList.size() > 0) {
-                        // If PRs exist, echo the first PR title (or process as needed)
-                        def prTitle = prList[0].title
-                        def prUrl = prList[0].html_url
-                        echo "PR for branch ${branchName}: ${prTitle} (${prUrl})"
+                    echo "Parsed Json : ${parsedJson}"
+                    // def prList = readJSON text: response
+
+                    // if (prList.size() > 0) {
+                    //     // If PRs exist, echo the first PR title (or process as needed)
+                    //     def prTitle = prList[0].title
+                    //     def prUrl = prList[0].html_url
+                    //     echo "PR for branch ${branchName}: ${prTitle} (${prUrl})"
                     } else {
                         echo "No PR found for branch ${branchName}."
                     }
