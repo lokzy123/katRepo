@@ -8,7 +8,7 @@ pipeline {
         stage('Get PR for Branch') {
             steps {
                 script {
-                    // Get the branch name (use BRANCH_NAME or set it as needed) check data 
+                    // Get the branch name (use BRANCH_NAME or set it as needed) check
                     def branchName = env.BRANCH_NAME
 
                     // GitHub API URL to get PRs for the branch (head=your-branch-name)
