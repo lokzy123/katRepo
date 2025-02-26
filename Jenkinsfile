@@ -18,7 +18,7 @@ pipeline {
                     def response = httpRequest url: prApiUrl, acceptType: 'APPLICATION_JSON'
 
 			def responseBody = response.content.toString()
-			echo "responseBody : ${responseBody}"
+			// echo "responseBody : ${responseBody}"
 			def prJson = readJSON text: responseBody
    //                  // Parse the response to check if there are any PRs for the branch
    //                  def jsonSlurper = new groovy.json.JsonSlurper()
