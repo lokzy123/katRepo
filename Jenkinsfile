@@ -29,7 +29,7 @@ pipeline {
                     def commentBody = '{"body": "This is a comment from Jenkins!"}'
                     
                     // Make the API request to post the comment on the PR using httpRequest
-                    def response = httpRequest(
+                    def response_comment = httpRequest(
                         url: review_comment_url,
                         httpMode: 'POST',
                         contentType: 'APPLICATION_JSON',
@@ -38,6 +38,9 @@ pipeline {
                         ],
                         requestBody: commentBody
                     )
+
+			def responseBody_Cmt = response_comment.content.toString()
+		echo "Parsed Json comment: ${prJson}"
                     echo "Parsed Json : ${prJson}"
                     // def prList = readJSON text: response
 
