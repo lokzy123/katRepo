@@ -1,5 +1,8 @@
 pipeline {
     agent any
+	environment {
+        GITHUB_TOKEN = credentials('git')  // Directly using the credential ID to access the token
+    }
     stages {
         stage('Get PR for Branch') {
             steps {
@@ -41,7 +44,7 @@ pipeline {
                             "body": "${commentBody}"
                         }""",
                         customHeaders: [
-                            [name: 'Authorization', value: "Bearer ${env.Git}"]
+                            [name: 'Authorization', value: "Bearer ${GITHUB_TOKEN}"]
                         ]
                     )
 
