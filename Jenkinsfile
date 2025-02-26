@@ -1,69 +1,28 @@
 pipeline {
     agent any
-    environment {
-        GITHUB_TOKEN = 'Github@neww2020'  // Store GitHub token in Jenkins credentials
-        REPO_OWNER = 'lokzy123'  // GitHub repository owner/username
-        REPO_NAME = 'katRepo' // GitHub repository name
-    }
     stages {
-        stage('Fetch Pull Request Description') {
+        stage('Get PR for Branch') {
             steps {
                 script {
-                    // Check if this is a PR build
-                    if (true) {
-                        // Prepare the GitHub API URL to fetch PR details changes 
-                        // def prUrl = "https://api.github.com/repos/${env.REPO_OWNER}/${env.REPO_NAME}/pulls/${env.CHANGE_ID}"
+                    // Get the branch name (use BRANCH_NAME or set it as needed) check data
+                    def branchName = env.BRANCH_NAME
 
-			executeKatalon executeArgs: './katalonc -noSplash -runMode=console -projectPath="/katRepo/katRepoGit.prj" -retry=0 -testSuitePath="Test Suites/Login_TestSuite" -browserType="Chrome" -executionProfile="default" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.1.0', x11Display: '', xvfbConfiguration: ''   
-                        // Send the GET request to GitHub API
-                        // def prResponse = sh(script: """
-                        //     curl -H "Authorization: token ${env.GITHUB_TOKEN}" \
-                        //          -H "Accept: application/vnd.github.v3+json" \
-                        //          "${prUrl}"
-                        //     """, returnStdout: true).trim()
+                    // GitHub API URL to get PRs for the branch (head=your-branch-name)
+                    def prApiUrl = "https://api.github.com/repos/lokzy123/katRepo/pulls?head=lokzy123:${branchName}"
 
-							// Make the HTTP GET request to fetch PR details using httpRequest step
-                   //  def response = httpRequest(
-                   //     url: prUrl,
-                   //     httpMode: 'GET',
-                   //     customHeaders: [[name: 'Authorization', value: "token ${GITHUB_TOKEN}"]],
-                   //     validResponseCodes: '200'
-                   // )
+                    // Make an API request to GitHub to get pull requests associated with the branch
+                    def response = httpRequest url: prApiUrl, acceptType: 'APPLICATION_JSON'
 
-			    // Make the HTTP GET request to fetch PR details
-                    // def connection = new URL(prUrl).openConnection() as HttpURLConnection
-                    // connection.setRequestMethod("GET")
-                    // connection.setRequestProperty("Authorization", "token ${GITHUB_TOKEN}")
-                    // connection.connect()
-		
-							// Read the response and parse JSON
-							// def response = connection.inputStream.text
-							// Parse the JSON payload using JsonSlurper
-							// def jsonSlurper = new groovy.json.JsonSlurper()
-							// def parsedJson = jsonSlurper.parseText(prResponse)
-							
-							// Log the parsed JSON object for inspection
-							// echo "Received GitHub Webhook payload: ${parsedJson}"
-		
-							// Example: Check for a GitHub issue event (you can customize this part)
-							// if (parsedJson.action == 'opened') {
-							// 	echo "New issue opened: ${parsedJson.issue.title}"
-							// }
-		
-							// Example: Accessing the GitHub issue data
-							// def issueTitle = parsedJson.issue.title
-							// def issueURL = parsedJson.issue.html_url
-							// echo "Issue Title: ${issueTitle}"
-							// echo "Issue URL: ${issueURL}"
-		
-                        // Parse the PR details (using JSON parsing)
-                        //def prJson = readJSON text: prResponse
+                    // Parse the response to check if there are any PRs for the branch
+                    def prList = readJSON text: response
 
-                        // Extract the pull request description
-                        //def prDescription = prJson.body
-                       // echo "Pull Request Description: ${prDescription}"
+                    if (prList.size() > 0) {
+                        // If PRs exist, echo the first PR title (or process as needed)
+                        def prTitle = prList[0].title
+                        def prUrl = prList[0].html_url
+                        echo "PR for branch ${branchName}: ${prTitle} (${prUrl})"
                     } else {
-                        echo "This is not a PR build."
+                        echo "No PR found for branch ${branchName}."
                     }
                 }
             }
