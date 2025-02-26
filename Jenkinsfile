@@ -56,7 +56,8 @@ pipeline {
                         echo "Title: ${title}"
                         
                         // Get story names from title
-                        def storyNames = title.split(',')
+                        def storyNames = title.split(",")
+                        
                         echo "Story Names: ${storyNames}"
                         
                         isBuildExecuted = true
