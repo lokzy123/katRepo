@@ -49,10 +49,10 @@ pipeline {
                         def responseBody = response.content.toString()
                         
                         // Get parsed json body
-                        def receivedJsonPayload = readJSON text: responseBody
+                        receivedJson = readJSON text: responseBody
                         
                         // Get title from parsed json
-                        def title = receivedJsonPayload.title
+                        def title = receivedJson.title
                         echo "Title: ${title}"
                         
                         // Get story names from title
