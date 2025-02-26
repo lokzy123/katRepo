@@ -1,8 +1,8 @@
 pipeline {
     agent any
-	// environment {
- //        GITHUB_TOKEN = credentials('git')  // Directly using the credential ID to access the token
- //    }
+	environment {
+        GITHUB_TOKEN = credentials('git-token')  // Directly using the credential ID to access the token
+    }
     stages {
         stage('Get PR for Branch') {
             steps {
