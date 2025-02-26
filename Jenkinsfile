@@ -34,18 +34,26 @@ pipeline {
                     def commentBody = 'This is a comment from Jenkins!'
                     
                     // Make the API request to post the comment on the PR using httpRequest
-                    def response_comment = httpRequest(
-                        url: commenst_Url,
-                        httpMode: 'POST',
-                        contentType: 'APPLICATION_JSON',
-			acceptType: 'APPLICATION_JSON',
-			requestBody: """{
-                            "body": "${commentBody}"
-                        }""",
-                        customHeaders: [
-                            [name: 'Authorization', value: "Bearer Github@neww2020"]
-                        ]
-                    )
+
+			def response_comment = sh(script: """
+                       curl -X POST -H "Authorization: token ${GITHUB_TOKEN}" \
+                        -H "Accept: application/vnd.github.v3+json" \
+                       ${commenst_Url} \
+                        -d '{"body": "${comment}"}'
+                    """, returnStdout: true)
+                   echo "response_comment: ${response_comment}"
+   //                  def response_comment = httpRequest(
+   //                      url: commenst_Url,
+   //                      httpMode: 'POST',
+   //                      contentType: 'APPLICATION_JSON',
+			// acceptType: 'APPLICATION_JSON',
+			// requestBody: """{
+   //                          "body": "${commentBody}"
+   //                      }""",
+   //                      customHeaders: [
+   //                          [name: 'Authorization', value: "Bearer Github@neww2020"]
+   //                      ]
+   //                  )
 
 			def responseBody_Cmt = response_comment.content.toString()
 		echo "Parsed Json comment: ${prJson}"
