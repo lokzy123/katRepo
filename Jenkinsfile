@@ -1,5 +1,9 @@
 pipeline {
     agent any
+	environment {
+    GITHUB_TOKEN = credentials('dab3456d-e50f-42d9-b865-1892fbef3a47')  // Use the token stored in Jenkins credentials
+}
+
     stages {
         stage('Get PR for Branch') {
             steps {
@@ -36,7 +40,7 @@ pipeline {
                         contentType: 'APPLICATION_JSON',
 			acceptType: 'APPLICATION_JSON',
                         headers: [
-                           	[name: 'Authorization', value: "Bearer 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"]
+                           	[name: 'Authorization', value: "Bearer ${GITHUB_TOKEN}"]
                         ],
                         requestBody: commentBody
                     )
