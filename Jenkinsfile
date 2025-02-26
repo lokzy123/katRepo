@@ -36,7 +36,7 @@ pipeline {
                     // Make the API request to post the comment on the PR using httpRequest
 
 			def response_comment = sh(script: """
-                       curl -X POST -H "Authorization: token ${GITHUB_TOKEN}" \
+                       curl -X POST -H "Authorization: Bearer ${GITHUB_TOKEN}" \
                         -H "Accept: application/vnd.github.v3+json" \
                        ${commenst_Url} \
                         -d '{"body": "${commentBody}"}'
