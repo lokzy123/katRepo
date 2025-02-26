@@ -41,7 +41,7 @@ pipeline {
                             "body": "${commentBody}"
                         }""",
                         customHeaders: [
-                            [name: 'Authorization', value: "Bearer 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"]
+                            [name: 'Authorization', value: "Bearer ${env.Git}"]
                         ]
                     )
 
