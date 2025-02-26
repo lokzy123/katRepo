@@ -31,7 +31,7 @@ pipeline {
                     
                     // Make the API request to post the comment on the PR using httpRequest
                     def response_comment = httpRequest(
-                        url: review_comment_url,
+                        url: commenst_Url,
                         httpMode: 'POST',
                         contentType: 'APPLICATION_JSON',
                         headers: [
