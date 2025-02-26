@@ -1,13 +1,19 @@
 pipeline {
     agent any
 	environment {
-        GITHUB_TOKEN = credentials('git-token')  // Directly using the credential ID to access the token
+		// Directly using the credential ID to access the token
+        GITHUB_CREDENTIALS = credentials('git-token')  // Directly using the credential ID to access the token
     }
     stages {
         stage('Get PR for Branch') {
             steps {
                 script {
-			echo "GITHUB_TOKEN: ${env.GITHUB_TOKEN}"
+			
+		def username = GITHUB_CREDENTIALS_USR
+                    def token = GITHUB_CREDENTIALS_PSW
+			   echo "GitHub Username: ${username}"
+                    echo "GitHub Token: ${token}"
+			echo "GITHUB_TOKEN: ${env.GITHUB_CREDENTIALS}"
                     // Get the branch name (use BRANCH_NAME or set it as needed) check
                     def branchName = env.BRANCH_NAME
 
@@ -36,26 +42,19 @@ pipeline {
                     // Make the API request to post the comment on the PR using httpRequest
 
 	
-   //                  def response_comment = httpRequest(
-   //                      url: commenst_Url,
-   //                      httpMode: 'POST',
-   //                      contentType: 'APPLICATION_JSON',
-			// acceptType: 'APPLICATION_JSON',
-			// requestBody: """{
-   //                          "body": "${commentBody}"
-   //                      }""",
-   //                      customHeaders: [
-   //                          [name: 'Authorization', value: "Bearer ${env.GITHUB_TOKEN}"]
-   //                      ]
-   //                  )
+                    def response_comment = httpRequest(
+                        url: commenst_Url,
+                        httpMode: 'POST',
+                        contentType: 'APPLICATION_JSON',
+			acceptType: 'APPLICATION_JSON',
+			requestBody: """{
+                            "body": "${commentBody}"
+                        }""",
+                        customHeaders: [
+                            [name: 'Authorization', value: "Bearer ${env.GITHUB_TOKEN}"]
+                        ]
+                    )
 			// Make an API request to post the comment on the PR
-                    sh """
-                        curl -X POST \
-                        -H "Authorization: token ${env.GITHUB_TOKEN}" \
-                        -H "Content-Type: application/json" \
-                        -d '${commentBody}' \
-                        ${commenst_Url}
-                    """
 
 			// def responseBody_Cmt = response_comment.content.toString()
 			// echo "Parsed Json comment: ${prJson}"
