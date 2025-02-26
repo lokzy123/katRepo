@@ -25,9 +25,9 @@ pipeline {
                     //     def prTitle = prList[0].title
                     //     def prUrl = prList[0].html_url
                     //     echo "PR for branch ${branchName}: ${prTitle} (${prUrl})"
-                    } else {
-                        echo "No PR found for branch ${branchName}."
-                    }
+                    // } else {
+                    //     echo "No PR found for branch ${branchName}."
+                    // }
                 }
             }
         }
