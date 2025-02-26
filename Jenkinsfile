@@ -18,7 +18,7 @@ pipeline {
 					if(env.CHANGE_ID){
 						echo "PR Title: ${env.CHANGE_TITLE}"
 						
-						echo "${env.CHANGE_TITLE} :PR Step is executed successfully"
+						echo ":PR Step is executed successfully"
 						
 						isBuildExecuted = true
 //						executeKatalon executeArgs: './katalonc -noSplash -runMode=console -projectPath="/Users/lokeshguppta/Katalon Studio/katRepo/katRepo/katRepoGit.prj" -retry=0 -testSuitePath="Test Suites/Login_TestSuite" -browserType="Chrome" -executionProfile="default" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.1.0', x11Display: '', xvfbConfiguration: ''
@@ -40,10 +40,10 @@ pipeline {
 				
 				if(commitMessage.equals('Execute Job')) {
 					
-					echo "${commitMessage} :Push step started successfully"
+					echo "Push step started successfully : ${commitMessage}"
 					
 					// Get the branch name (use BRANCH_NAME or set it as needed) check
-					def branchName = env.BRANCH_NAME
+					def branchName = ${env.BRANCH_NAME}
 
 					// GitHub API URL to get PRs for the branch (head=your-branch-name)
 					def prApiUrl = "https://api.github.com/repos/lokzy123/katRepo/pulls?head=lokzy123:${branchName}"
@@ -98,7 +98,7 @@ pipeline {
 							contentType: 'APPLICATION_JSON',
 							acceptType: 'APPLICATION_JSON',
 							requestBody: """{
-                            "body": "${commentBody}"
+                           					 "body": "${commentBody}"
 							}""",
 							customHeaders: [
 								[name: 'Authorization', value: "Bearer ${token}"]
