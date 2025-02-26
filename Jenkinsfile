@@ -22,7 +22,7 @@ pipeline {
 
 			def title = prJson.title
 			echo "Title : ${title}"
-			def review_comment_url = prJson.review_comments_url
+			def review_comment_url = prJson.comments_url
 			def commenst_Url = review_comment_url[0]
 			echo "Comments URL : ${commenst_Url}"
 
