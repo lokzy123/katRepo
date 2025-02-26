@@ -39,7 +39,7 @@ pipeline {
                         httpMode: 'POST',
                         contentType: 'APPLICATION_JSON',
 			acceptType: 'APPLICATION_JSON',
-			equestBody: """{
+			requestBody: """{
                             "body": "${commentBody}"
                         }""",
                         customHeaders: [
