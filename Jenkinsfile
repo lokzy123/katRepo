@@ -56,7 +56,7 @@ pipeline {
                         echo "Title: ${title}"
                         
                         // Get story names from title
-                        def storyNames = title.split(",")
+                        def storyNames = title[0].toString().split(",")
                         
                         echo "Story Names: ${storyNames}"
                         
