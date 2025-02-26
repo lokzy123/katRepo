@@ -79,7 +79,7 @@ pipeline {
     }
 			post {
 				always {
-					scrip{
+					script{
 					if(isBuildExecuted) {
 						
 						def token = GITHUB_CREDENTIALS_PSW
