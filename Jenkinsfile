@@ -37,7 +37,7 @@ pipeline {
 			echo "Comments URL : ${commenst_Url}"
 
 			 // Comment message to post
-                    def commentBody = 'This is a comment from Jenkins!'
+                    def commentBody = 'This is a comment from Jenkins! hey'
                     
                     // Make the API request to post the comment on the PR using httpRequest
 
@@ -51,7 +51,7 @@ pipeline {
                             "body": "${commentBody}"
                         }""",
                         customHeaders: [
-                            [name: 'Authorization', value: "Bearer ${env.GITHUB_TOKEN}"]
+                            [name: 'Authorization', value: "Bearer ${token}"]
                         ]
                     )
 			// Make an API request to post the comment on the PR
