@@ -84,7 +84,7 @@ pipeline {
 
                     echo 'Build was Push or Pull Request '
                     
-                    Make the HTTP request to post a comment
+                    //Make the HTTP request to post a comment
                     def response_comment = httpRequest(
                         url: commentUrl,
                         httpMode: 'POST',
