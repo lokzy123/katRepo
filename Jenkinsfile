@@ -91,8 +91,9 @@ pipeline {
 
                     // Construct the Jenkins artifact URL (adjust it to your Jenkins URL)
                     def reportUrl = "https://yourjenkinsurl/job/PR Exe/lastSuccessfulBuild/artifact/${REPORT_PATH}"
-                    
-                    def commentBody = 'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'
+
+                    echo "reportUrl: ${reportUrl}"
+                    def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'"
 
                     echo 'Build was Push or Pull Request '
                     
