@@ -84,19 +84,19 @@ pipeline {
 
                     echo 'Build was Push or Pull Request '
                     
-                    // Make the HTTP request to post a comment
-                    // def response_comment = httpRequest(
-                    //     url: commentUrl,
-                    //     httpMode: 'POST',
-                    //     contentType: 'APPLICATION_JSON',
-                    //     acceptType: 'APPLICATION_JSON',
-                    //     requestBody: """{
-                    //         "body": "${commentBody}"
-                    //     }""",
-                    //     customHeaders: [
-                    //         [name: 'Authorization', value: "Bearer ${token}"]
-                    //     ]
-                    // )
+                    Make the HTTP request to post a comment
+                    def response_comment = httpRequest(
+                        url: commentUrl,
+                        httpMode: 'POST',
+                        contentType: 'APPLICATION_JSON',
+                        acceptType: 'APPLICATION_JSON',
+                        requestBody: """{
+                            "body": "${commentBody}"
+                        }""",
+                        customHeaders: [
+                            [name: 'Authorization', value: "Bearer ${token}"]
+                        ]
+                    )
                 } else {
                     echo 'Build was neither for Push nor for Pull Request'
                 }
