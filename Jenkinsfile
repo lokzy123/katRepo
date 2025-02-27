@@ -90,7 +90,7 @@ pipeline {
                     echo "Comments URL: ${commentUrl}"
 
                     // Construct the Jenkins artifact URL (adjust it to your Jenkins URL)
-                    def reportUrl = "https://3e00-43-248-71-237.ngrok-free.app/job/PR Exe/lastSuccessfulBuild/artifact/${REPORT_PATH}"
+                    def reportUrl = "https://3e00-43-248-71-237.ngrok-free.app/job/PR_Exe/lastSuccessfulBuild/artifact/${REPORT_PATH}"
 
                     echo "reportUrl: ${reportUrl}"
                     def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'"
@@ -111,7 +111,7 @@ pipeline {
                         ]
                     )
                 } else {
-                    echo 'Build was neither for Push nor for Pull Request'
+                    echo 'Build was neither got a Execute Job Command nor a Pull Request'
                 }
             }
         }
