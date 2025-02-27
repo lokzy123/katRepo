@@ -3,11 +3,15 @@ def isBuildExecuted = false  // Global Boolean variable
 
 def receivedJson = ''
 
+
+
 pipeline {
     agent any
     environment {
         // Credential saved at jenkins(Personal Access token from github) : here git-token is id of that credential
         GITHUB_CREDENTIALS = credentials('git-token')  // Directly using the credential ID to access the token
+
+        REPORT_PATH = 'Reports/*'
     }
     stages {
         stage('New PR Opened'){
@@ -16,6 +20,9 @@ pipeline {
                     if (env.CHANGE_ID) {
                         echo "PR Title: ${env.CHANGE_TITLE}"
                         echo "PR Step is executed successfully"
+
+                        executeKatalon executeArgs: './katalonc -noSplash -runMode=console -projectPath="/Users/lokeshguppta/Katalon Studio/LoginTest/katRepo/katRepoGit.prj" -retry=0 -testSuitePath="Test Suites/Login_TestSuite" -browserType="Chrome" -executionProfile="default" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''
+                        
                         isBuildExecuted = true
                     }
                 }
@@ -61,6 +68,8 @@ pipeline {
                         echo "Story Names: ${storyNames}"
                         
                         isBuildExecuted = true
+
+                        executeKatalon executeArgs: './katalonc -noSplash -runMode=console -projectPath="/Users/lokeshguppta/Katalon Studio/LoginTest/katRepo/katRepoGit.prj" -retry=0 -testSuitePath="Test Suites/Login_TestSuite" -browserType="Chrome" -executionProfile="default" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''
                     }
                 }
             }
@@ -79,8 +88,11 @@ pipeline {
                     // In case the review_comment_url has multiple URLs, select the first one
                     def commentUrl = review_comment_url[0]
                     echo "Comments URL: ${commentUrl}"
+
+                    // Construct the Jenkins artifact URL (adjust it to your Jenkins URL)
+                    def reportUrl = "https://yourjenkinsurl/job/PR Exe/lastSuccessfulBuild/artifact/${REPORT_PATH}"
                     
-                    def commentBody = 'This is a comment from Jenkins! hey'
+                    def commentBody = 'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'
 
                     echo 'Build was Push or Pull Request '
                     
