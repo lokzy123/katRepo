@@ -122,6 +122,8 @@ pipeline {
                         ]
                     )
                 } else {
+                    def reportPath = env.WORKSPACE
+                    echo "Workspace path : ${reportPath}"
                     echo 'Build was neither got a Execute Job Command nor a Pull Request'
                 }
             }
