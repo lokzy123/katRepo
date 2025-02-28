@@ -97,10 +97,11 @@ pipeline {
 
                     echo 'Build was Push or Pull Request '
 
-                     // Set report path
+                     // Set report path 
                     def reportPath = "${env.WORKSPACE}/Katalon_Reports"
 
                     echo 'reportPath : "${reportPath}/**/*.html"'
+
                     // Archive reports (e.g., HTML reports)
                     archiveArtifacts allowEmptyArchive: true, artifacts: "${reportPath}/**/*.html", onlyIfSuccessful: true
 
