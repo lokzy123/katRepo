@@ -96,6 +96,16 @@ pipeline {
                     def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'"
 
                     echo 'Build was Push or Pull Request '
+
+                     // Set report path
+                    def reportPath = "${env.WORKSPACE}/Katalon_Reports"
+
+                    echo 'reportPath : "${reportPath}/**/*.html"'
+                    // Archive reports (e.g., HTML reports)
+                    archiveArtifacts allowEmptyArchive: true, artifacts: "${reportPath}/**/*.html", onlyIfSuccessful: true
+
+                    // Optionally, you can archive other formats like JUnit reports if needed
+                    archiveArtifacts allowEmptyArchive: true, artifacts: "${reportPath}/**/*.xml", onlyIfSuccessful: true
                     
                     //Make the HTTP request to post a comment
                     def response_comment = httpRequest(
