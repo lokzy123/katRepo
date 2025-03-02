@@ -103,10 +103,10 @@ pipeline {
                     echo 'reportPath : "${reportPath}/**/*.html"'
 
                     // Archive reports (e.g., HTML reports)
-                    archiveArtifacts allowEmptyArchive: true, artifacts: "/Reports/*/Login_TestSuite/*/*.html", onlyIfSuccessful: true
+                    archiveArtifacts allowEmptyArchive: true, artifacts: "*.html", onlyIfSuccessful: true
 
                     // Optionally, you can archive other formats like JUnit reports if needed
-                    archiveArtifacts allowEmptyArchive: true, artifacts: "/Reports/*/Login_TestSuite/*/*.csv", onlyIfSuccessful: true
+                    archiveArtifacts allowEmptyArchive: true, artifacts: "*.csv", onlyIfSuccessful: true
                     
                     //Make the HTTP request to post a comment
                     // def response_comment = httpRequest(
