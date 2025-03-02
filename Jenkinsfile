@@ -130,6 +130,32 @@ pipeline {
                     echo "reportPath : ${reportPath}/Reports/**/Login_TestSuite/**/*.html"
                     echo "nodName : ${nodName}"
 
+
+                     // Get the comments URL from the received JSON
+                    def review_comment_url = receivedJson.comments_url
+                    
+                    // In case the review_comment_url has multiple URLs, select the first one
+                    def commentUrl = review_comment_url[0]
+
+                    def fileContent = readFile("${reportPath}/Reports/**/Login_TestSuite/**/*.html")
+                    
+                    // Optionally escape HTML content (if necessary for large files or special characters)
+                    def escapedContent = fileContent.replaceAll("'", "&#39;").replaceAll("\"", "&quot;")
+
+                     //Make the HTTP request to post a comment
+                    def response_comment = httpRequest(
+                        url: commentUrl,
+                        httpMode: 'POST',
+                        contentType: 'APPLICATION_JSON',
+                        acceptType: 'APPLICATION_JSON',
+                        requestBody: """{
+                            "body": "<pre>${escapedContent}</pre>"
+                        }""",
+                        customHeaders: [
+                            [name: 'Authorization', value: "Bearer ${token}"]
+                        ]
+                    )
+                    
                     echo 'Build neither got a Execute Job Command nor a Pull Request'
                 }
             }
