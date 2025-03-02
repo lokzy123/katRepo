@@ -126,7 +126,7 @@ pipeline {
                     def buildNumber = env.BUILD_NUMBER
                     def nodName = env.NODE_NAME
                     def runDisplayName = env.RUN_DISPLAY_URL
-                    echo "reportPath path : ${runDisplayName}/execution/node/3/ws/Reports/**/*.html"
+                    echo "reportPath path : ${runDisplayName}/execution/node/3/ws/Reports"
                     echo "buidNumber : ${buildNumber}"
                     echo "nodName : ${nodName}"
 
