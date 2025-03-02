@@ -123,10 +123,10 @@ pipeline {
                     )
                 } else {
                     def reportPath = env.WORKSPACE
-                    def buidNumber = env.BUILD_NUMBER
+                    def buildNumber = env.BUILD_NUMBER
                     def nodName = env.NODE_NAME
                     echo "reportPath path : ${reportPath}/${buildNumber}/console"
-                    echo "buidNumber : ${buidNumber}"
+                    echo "buidNumber : ${buildNumber}"
                     echo "nodName : ${nodName}"
 
                     echo 'Build neither got a Execute Job Command nor a Pull Request'
