@@ -98,15 +98,15 @@ pipeline {
                     echo 'Build was Push or Pull Request '
 
                      // Set report path 
-                    def reportPath = "${env.WORKSPACE}/Katalon_Reports"
+                    def reportPath = env.WORKSPACE
 
                     echo 'reportPath : "${reportPath}/**/*.html"'
 
                     // Archive reports (e.g., HTML reports)
-                    archiveArtifacts allowEmptyArchive: true, artifacts: "${reportPath}/**/*.html", onlyIfSuccessful: true
+                    archiveArtifacts allowEmptyArchive: true, artifacts: "${reportPath}/Reports/**/Login_TestSuite/**/*.html", onlyIfSuccessful: true
 
                     // Optionally, you can archive other formats like JUnit reports if needed
-                    archiveArtifacts allowEmptyArchive: true, artifacts: "${reportPath}/**/*.xml", onlyIfSuccessful: true
+                    archiveArtifacts allowEmptyArchive: true, artifacts: "${reportPath}/Reports/**/Login_TestSuite/**/*.csv", onlyIfSuccessful: true
                     
                     //Make the HTTP request to post a comment
                     def response_comment = httpRequest(
