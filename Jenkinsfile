@@ -103,24 +103,24 @@ pipeline {
                     echo 'reportPath : "${reportPath}/**/*.html"'
 
                     // Archive reports (e.g., HTML reports)
-                    archiveArtifacts allowEmptyArchive: true, artifacts: "${reportPath}/Reports/**/Login_TestSuite/**/*.html", onlyIfSuccessful: true
+                    archiveArtifacts allowEmptyArchive: true, artifacts: "${reportPath}/Reports/*/Login_TestSuite/*/*.html", onlyIfSuccessful: true
 
                     // Optionally, you can archive other formats like JUnit reports if needed
-                    archiveArtifacts allowEmptyArchive: true, artifacts: "${reportPath}/Reports/**/Login_TestSuite/**/*.csv", onlyIfSuccessful: true
+                    archiveArtifacts allowEmptyArchive: true, artifacts: "${reportPath}/Reports/*/Login_TestSuite/*/*.csv", onlyIfSuccessful: true
                     
                     //Make the HTTP request to post a comment
-                    def response_comment = httpRequest(
-                        url: commentUrl,
-                        httpMode: 'POST',
-                        contentType: 'APPLICATION_JSON',
-                        acceptType: 'APPLICATION_JSON',
-                        requestBody: """{
-                            "body": "${commentBody}"
-                        }""",
-                        customHeaders: [
-                            [name: 'Authorization', value: "Bearer ${token}"]
-                        ]
-                    )
+                    // def response_comment = httpRequest(
+                    //     url: commentUrl,
+                    //     httpMode: 'POST',
+                    //     contentType: 'APPLICATION_JSON',
+                    //     acceptType: 'APPLICATION_JSON',
+                    //     requestBody: """{
+                    //         "body": "${commentBody}"
+                    //     }""",
+                    //     customHeaders: [
+                    //         [name: 'Authorization', value: "Bearer ${token}"]
+                    //     ]
+                    // )
                 } else {
                     def reportPath = env.WORKSPACE
                     def buildNumber = env.BUILD_NUMBER
