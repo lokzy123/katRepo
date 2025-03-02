@@ -127,7 +127,7 @@ pipeline {
                     def nodName = env.NODE_NAME
                     def runDisplayName = env.RUN_DISPLAY_URL
                     echo "reportPath path : ${runDisplayName}/execution/node/3/ws/Reports"
-                    echo "buidNumber : ${buildNumber}"
+                    echo "reportPath : ${reportPath}/Reports/**/Login_TestSuite/**/*.html"
                     echo "nodName : ${nodName}"
 
                     echo 'Build neither got a Execute Job Command nor a Pull Request'
