@@ -123,8 +123,13 @@ pipeline {
                     )
                 } else {
                     def reportPath = env.WORKSPACE
-                    echo "Workspace path : ${reportPath}"
-                    echo 'Build was neither got a Execute Job Command nor a Pull Request'
+                    def buidNumber = env.BUILD_NUMBER
+                    def nodName = env.NODE_NAME
+                    echo "reportPath path : ${reportPath}"
+                    echo "buidNumber : ${buidNumber}"
+                    echo "nodName : ${nodName}"
+
+                    echo 'Build neither got a Execute Job Command nor a Pull Request'
                 }
             }
         }
