@@ -100,7 +100,7 @@ pipeline {
                      // Set report path 
                     def reportPath = env.WORKSPACE
 
-                    def fileContent = readFile("${reportPath}/Reports/*/Login_TestSuite/*/*.html")
+                    def fileContent = readFile("${reportPath}/Reports/**/Login_TestSuite/**/*.html")
                     
                     // Optionally escape HTML content (if necessary for large files or special characters)
                     def escapedContent = fileContent.replaceAll("'", "&#39;").replaceAll("\"", "&quot;")
