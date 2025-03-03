@@ -100,6 +100,25 @@ pipeline {
                      // Set report path 
                     def reportPath = env.WORKSPACE
 
+                    def fileContent = readFile("${reportPath}/Reports/**/Login_TestSuite/**/*.html")
+                    
+                    // Optionally escape HTML content (if necessary for large files or special characters)
+                    def escapedContent = fileContent.replaceAll("'", "&#39;").replaceAll("\"", "&quot;")
+
+                     //Make the HTTP request to post a comment
+                    def response_comment = httpRequest(
+                        url: commentUrl,
+                        httpMode: 'POST',
+                        contentType: 'APPLICATION_JSON',
+                        acceptType: 'APPLICATION_JSON',
+                        requestBody: """{
+                            "body": "<pre>${escapedContent}</pre>"
+                        }""",
+                        customHeaders: [
+                            [name: 'Authorization', value: "Bearer ${token}"]
+                        ]
+                    )
+                    
                     // echo 'reportPath : "${reportPath}/**/*.html"'
 
                     // // Archive reports (e.g., HTML reports)
