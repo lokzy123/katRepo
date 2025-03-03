@@ -100,13 +100,13 @@ pipeline {
                      // Set report path 
                     def reportPath = env.WORKSPACE
 
-                    echo 'reportPath : "${reportPath}/**/*.html"'
+                    // echo 'reportPath : "${reportPath}/**/*.html"'
 
-                    // Archive reports (e.g., HTML reports)
-                    archiveArtifacts allowEmptyArchive: true, artifacts: "Reports/20250211_012209/Login_TestSuite/20250211_012241/*.html"
+                    // // Archive reports (e.g., HTML reports)
+                    // archiveArtifacts allowEmptyArchive: true, artifacts: "Reports/20250211_012209/Login_TestSuite/20250211_012241/*.html"
 
-                    // Optionally, you can archive other formats like JUnit reports if needed
-                    archiveArtifacts allowEmptyArchive: true, artifacts: "*.csv"
+                    // // Optionally, you can archive other formats like JUnit reports if needed
+                    // archiveArtifacts allowEmptyArchive: true, artifacts: "*.csv"
                     
                     //Make the HTTP request to post a comment
                     // def response_comment = httpRequest(
