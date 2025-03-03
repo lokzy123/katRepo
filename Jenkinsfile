@@ -90,7 +90,7 @@ pipeline {
                     echo "Comments URL: ${commentUrl}"
 
                     // Construct the Jenkins artifact URL (adjust it to your Jenkins URL)
-                    def reportUrl = "https://3e00-43-248-71-237.ngrok-free.app/job/PR_Exe/lastSuccessfulBuild/artifact/Reports/**/Login_TestSuite/**/*.html"
+                    def reportUrl = "https://3e00-43-248-71-237.ngrok-free.app/job/PR_Exe/lastSuccessfulBuild/artifact/Reports/*/Login_TestSuite/*/*.html"
 
                     echo "reportUrl: ${reportUrl}"
                     def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'"
@@ -100,7 +100,7 @@ pipeline {
                      // Set report path 
                     def reportPath = env.WORKSPACE
 
-                    def fileContent = readFile("${reportPath}/Reports/**/Login_TestSuite/**/*.html")
+                    def fileContent = readFile("${reportPath}/Reports/*/Login_TestSuite/*/*.html")
                     
                     // Optionally escape HTML content (if necessary for large files or special characters)
                     def escapedContent = fileContent.replaceAll("'", "&#39;").replaceAll("\"", "&quot;")
