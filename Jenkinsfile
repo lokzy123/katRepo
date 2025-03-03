@@ -57,7 +57,8 @@ pipeline {
                         
                         // Get parsed json body
                         receivedJson = readJSON text: responseBody
-                        
+
+                        echo "receivedJson : ${receivedJson}"
                         // Get title from parsed json
                         def title = receivedJson.title
                         echo "Title: ${title}"
