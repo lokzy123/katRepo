@@ -90,7 +90,8 @@ pipeline {
                         
                         echo "Story Names: ${storyNames}"
 
-                        commentUrl = receivedJson.comments_url
+                        def review_comment_url = receivedJson.comments_url
+                        commentUrl = review_comment_url[0]
                         echo "commentUrl : ${commentUrl}"
                         
                         isBuildExecuted = true
