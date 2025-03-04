@@ -91,10 +91,12 @@ pipeline {
                     echo "Comments URL: ${commentUrl}"
 
                     // Set report path 
-                    def reportPath = env.WORKSPACE
+                    def reportPath = env.STAGE_URL
+
+                    def buildNumber = env.BUILD_NUMBER
 
                     // Construct the Jenkins artifact URL (adjust it to your Jenkins URL)
-                    def reportUrl = "${reportPath}/Reports/**/Login_TestSuite/**/*.html"
+                    def reportUrl = "${reportPath}/${buildNumber}/artifact/Reports/**/Login_TestSuite/**/*.html"
 
                     echo "reportUrl: ${reportUrl}"
                     def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'"
@@ -145,7 +147,7 @@ pipeline {
                         ]
                     )
 
-                     def fileContent = readFile("${reportPath}/Reports/**/Login_TestSuite/**/*.html")
+                     def fileContent = readFile("${reportUrl}")
                 } else {
                     // def reportPath = env.WORKSPACE
                     // def buildNumber = env.BUILD_NUMBER
