@@ -27,7 +27,7 @@ pipeline {
                         def prNumber = env.CHANGE_ID
                         
                         // GitHub API URL to get PRs for the branch (head=your-branch-name)
-                        def prApiUrl = "https://api.github.com/repos/lokzy123/katRepo/issues/${prNumber}/comments"
+                        def prApiUrl = "https://api.github.com/repos/lokzy123/katRepo/issues/${prNumber}"
 
                         // Make an API request to GitHub to get pull requests associated with the branch
                         def response = httpRequest url: prApiUrl, acceptType: 'APPLICATION_JSON'
