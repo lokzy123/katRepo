@@ -23,19 +23,19 @@ WebUI.navigateToUrl('https://www.makemytrip.com/')
 
 WebUI.click(findTestObject('Object Repository/Main Page/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_ENG_commonModal__close'))
 
-WebUI.click(findTestObject('Object Repository/Main Page/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/a_Hotels  Hotels'))
+// WebUI.click(findTestObject('Object Repository/Main Page/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/a_Hotels  Hotels'))
 
-WebUI.click(findTestObject('Object Repository/Main Page/Page_MakeMyTrip.com Save upto 60 on Hotel B_affcea/span_Homestays  Villas'))
+// WebUI.click(findTestObject('Object Repository/Main Page/Page_MakeMyTrip.com Save upto 60 on Hotel B_affcea/span_Homestays  Villas'))
 
-WebUI.click(findTestObject('Object Repository/Main Page/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_Holiday Packages'))
+// WebUI.click(findTestObject('Object Repository/Main Page/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_Holiday Packages'))
 
-WebUI.click(findTestObject('Object Repository/Main Page/Page_Holiday Packages, Indian Holidays, Hon_9f5851/span_Trains'))
+// WebUI.click(findTestObject('Object Repository/Main Page/Page_Holiday Packages, Indian Holidays, Hon_9f5851/span_Trains'))
 
-WebUI.click(findTestObject('Object Repository/Main Page/Page_Online Train Ticket Booking, IRCTC Tic_07822b/span_Buses'))
+// WebUI.click(findTestObject('Object Repository/Main Page/Page_Online Train Ticket Booking, IRCTC Tic_07822b/span_Buses'))
 
-WebUI.click(findTestObject('Object Repository/Main Page/Page_Online Bus Ticket Booking, Book Confir_a0abd1/span_Cabs'))
+// WebUI.click(findTestObject('Object Repository/Main Page/Page_Online Bus Ticket Booking, Book Confir_a0abd1/span_Cabs'))
 
-WebUI.click(findTestObject('Object Repository/Main Page/Page_Online Cab Booking - Book Outstation C_1a3eba/span_Forex Card  Currency'))
+// WebUI.click(findTestObject('Object Repository/Main Page/Page_Online Cab Booking - Book Outstation C_1a3eba/span_Forex Card  Currency'))
 
-WebUI.click(findTestObject('Object Repository/Main Page/Page_Forex Card - Buy Multi-Currency Forex _9b8cd9/span_Travel Insurance'))
+// WebUI.click(findTestObject('Object Repository/Main Page/Page_Forex Card - Buy Multi-Currency Forex _9b8cd9/span_Travel Insurance'))
 
