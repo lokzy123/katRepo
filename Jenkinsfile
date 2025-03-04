@@ -38,6 +38,8 @@ pipeline {
                         // Get parsed json body
                         receivedJson = readJSON text: responseBody
 
+                        echo "receivedJson : ${receivedJson}"
+
                         executeKatalon executeArgs: './katalonc -noSplash -runMode=console -projectPath="/Users/lokeshguppta/Katalon Studio/LoginTest/katRepo/katRepoGit.prj" -retry=0 -testSuitePath="Test Suites/Login_TestSuite" -browserType="Chrome" -executionProfile="default" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''
                         
                         isBuildExecuted = true
@@ -99,6 +101,9 @@ pipeline {
                 if (isBuildExecuted) {
                     // Accessing the GitHub token correctly
                     def token = GITHUB_CREDENTIALS_PSW
+
+
+                    echo "receivedJson : ${receivedJson}"
                     
                     // Get the comments URL from the received JSON
                     def review_comment_url = receivedJson.comments_url
