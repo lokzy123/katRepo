@@ -23,7 +23,7 @@ WebUI.navigateToUrl('https://www.makemytrip.com/')
 
 WebUI.click(findTestObject('Object Repository/Main Page/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/span_ENG_commonModal__close'))
 
-// WebUI.click(findTestObject('Object Repository/Main Page/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/a_Hotels  Hotels'))
+//  WebUI.click(findTestObject('Object Repository/Main Page/Page_MakeMyTrip - 1 Travel Website 50 OFF o_75db21/a_Hotels  Hotels'))
 
 // WebUI.click(findTestObject('Object Repository/Main Page/Page_MakeMyTrip.com Save upto 60 on Hotel B_affcea/span_Homestays  Villas'))
 
