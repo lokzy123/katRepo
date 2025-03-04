@@ -91,7 +91,7 @@ pipeline {
                     echo "Comments URL: ${commentUrl}"
 
                     // Set report path 
-                    def reportPath = env.STAGE_URL
+                    def reportPath = env.JOB_URL
 
                     def buildNumber = env.BUILD_NUMBER
 
