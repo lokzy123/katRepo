@@ -24,8 +24,10 @@ pipeline {
                         // Get the branch name (use BRANCH_NAME or set it as needed)
                         def branchName = env.BRANCH_NAME
 
+                        def prNumber = env.CHANGE_ID
+                        
                         // GitHub API URL to get PRs for the branch (head=your-branch-name)
-                        def prApiUrl = "https://api.github.com/repos/lokzy123/katRepo/pulls?head=lokzy123:${branchName}"
+                        def prApiUrl = "https://api.github.com/repos/lokzy123/katRepo/issues/${prNumber}/comments"
 
                         // Make an API request to GitHub to get pull requests associated with the branch
                         def response = httpRequest url: prApiUrl, acceptType: 'APPLICATION_JSON'
@@ -60,7 +62,7 @@ pipeline {
                         
                         // Get the branch name (use BRANCH_NAME or set it as needed)
                         def branchName = env.BRANCH_NAME
-
+                        
                         // GitHub API URL to get PRs for the branch (head=your-branch-name)
                         def prApiUrl = "https://api.github.com/repos/lokzy123/katRepo/pulls?head=lokzy123:${branchName}"
 
