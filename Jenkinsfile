@@ -90,8 +90,11 @@ pipeline {
                     def commentUrl = review_comment_url[0]
                     echo "Comments URL: ${commentUrl}"
 
+                    // Set report path 
+                    def reportPath = env.WORKSPACE
+
                     // Construct the Jenkins artifact URL (adjust it to your Jenkins URL)
-                    def reportUrl = "https://3e00-43-248-71-237.ngrok-free.app/job/PR_Exe/lastSuccessfulBuild/artifact/Reports/*/Login_TestSuite/*/*.html"
+                    def reportUrl = "${reportPath}/Reports/**/Login_TestSuite/**/*.html"
 
                     echo "reportUrl: ${reportUrl}"
                     def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'"
@@ -141,6 +144,8 @@ pipeline {
                             [name: 'Authorization', value: "Bearer ${token}"]
                         ]
                     )
+
+                     def fileContent = readFile("${reportPath}/Reports/**/Login_TestSuite/**/*.html")
                 } else {
                     // def reportPath = env.WORKSPACE
                     // def buildNumber = env.BUILD_NUMBER
