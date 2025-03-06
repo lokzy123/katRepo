@@ -19,19 +19,18 @@ pipeline {
             steps{
                 script{
                     if (env.CHANGE_ID) {
+                        //Get the title of PR
                         echo "PR Title: ${env.CHANGE_TITLE}"
                         
-                        echo "PR Step is executed successfully"
+                        echo "Enetered is PR Step"
 
-                        // Get the branch name (use BRANCH_NAME or set it as needed)
-                        def branchName = env.BRANCH_NAME
-
+                        //Get PR number
                         def prNumber = env.CHANGE_ID
                         
-                        // GitHub API URL to get PRs for the branch (head=your-branch-name)
+                        // GitHub API URL to of PRs
                         def prApiUrl = "https://api.github.com/repos/lokzy123/katRepo/issues/${prNumber}"
 
-                        // Make an API request to GitHub to get pull requests associated with the branch
+                        // Make an API request to GitHub to get pull requests response associated with the branch
                         def response = httpRequest url: prApiUrl, acceptType: 'APPLICATION_JSON'
                         
                         // Get response body as string
@@ -40,11 +39,33 @@ pipeline {
                         // Get parsed json body
                         receivedJson = readJSON text: responseBody
 
+                        //Get Comment URl From received json
                         commentUrl = receivedJson.comments_url
+
+                        //Print URL on Console
                         echo "commentUrl : ${commentUrl}"
 
+                        //Mark build executed flag true
                         isBuildExecuted = true
 
+                        def prDescription = receivedJson.body
+
+                        //Print description of PR
+                        echo "prDescription : ${prDescription}"
+
+                        def lines = prDescription.split("\n|\r")
+                        for(def line : lines){
+                            echo "line : ${line}"
+                        if(line.containsIgnoreCase("TestSuiteCollectionPath")){
+
+                            echo "line : ${line}"
+                            
+                        }else{
+
+                        }
+                        }
+
+                        //Execution command to execute test suite
                         executeKatalon executeArgs: '-retry=0 -testSuitePath="Test Suites/Login_TestSuite" -browserType="Chrome" -executionProfile="default" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''
                     }
                 }
@@ -93,7 +114,24 @@ pipeline {
                         def review_comment_url = receivedJson.comments_url
                         commentUrl = review_comment_url[0]
                         echo "commentUrl : ${commentUrl}"
-                        
+
+                        def prDescription = receivedJson.body
+
+                        //Print description of PR
+                        echo "prDescription : ${prDescription}"
+
+                        def lines = prDescription.split("\n|\r")
+                        for(def line : lines){
+                            echo "line : ${line}"
+                        if(line.containsIgnoreCase("TestSuiteCollectionPath")){
+
+                            echo "line : ${line}"
+                            
+                        }else{
+
+                        }
+                        }
+
                         isBuildExecuted = true
 
                         executeKatalon executeArgs: '-retry=0 -testSuitePath="Test Suites/Login_TestSuite" -browserType="Chrome" -executionProfile="default" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''
