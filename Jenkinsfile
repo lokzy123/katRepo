@@ -166,6 +166,8 @@ pipeline {
                     // Construct the Jenkins artifact URL (adjust it to your Jenkins URL)
                     def reportUrl = "${reportPath}/${buildNumber}/artifact/Reports/**/Login_TestSuite/**/*.html"
 
+                    reportUrl = reportUrl.replace("//","/")
+
                     echo "reportUrl: ${reportUrl}"
                     def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'"
 
