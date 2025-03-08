@@ -177,7 +177,7 @@ pipeline {
                     // Accessing the GitHub token correctly
                     def token = GITHUB_CREDENTIALS_PSW
 
-                    def consoleOutput = currentBuild.rawBuild.getLog()
+                    def consoleOutput = urrentBuild.rawBuild.getLog(1000).join('\n')
                      // writeFile file: 'console_output.txt', text: consoleOutput
 
                     // echo "receivedJson : ${receivedJson}"
