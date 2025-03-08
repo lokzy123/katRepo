@@ -218,7 +218,7 @@ pipeline {
                         def latestFile = files[0]
 
                         // Read the content of the latest file
-                        fileContent = readFile("${latestFile}")
+                        fileContent = readFile("${latestFile}").bytes
 
                         // Print the file content or use it further in your pipeline
                         // echo "Content of the latest file: \n${fileContent}"
@@ -238,7 +238,7 @@ pipeline {
                     //     ]
                     // )
 
-                    def encodedFile = fileContent.bytes.encodeBase64().toString()
+                    def encodedFile = java.util.Base64.getEncoder().encodeToString(fileContent)
                     // Prepare the body of the POST request
                     def requestBody = [
                         'fileName': 'Reports.html',  // Name of the file to be created
