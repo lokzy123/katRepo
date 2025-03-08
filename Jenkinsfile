@@ -253,7 +253,6 @@ pipeline {
                         requestBody: requestBody,
                        customHeaders: [
                             [name: 'Authorization', value: "Bearer ${token}"],
-                           [name: 'Content-Type', value: "'application/json"]
                         ]
                     )
                 } else {
