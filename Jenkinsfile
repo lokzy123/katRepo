@@ -143,7 +143,7 @@ pipeline {
                             echo "line : ${line}"
                         if(line.contains(testSuiteVar)){
 
-                            echo "line : ${eachLine}"
+                            echo "line : ${line}"
                             
                         }else{
 
