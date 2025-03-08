@@ -198,6 +198,15 @@ pipeline {
                     // Construct the Jenkins artifact URL (adjust it to your Jenkins URL)
                     def reportUrl = "${reportPath}/${buildNumber}/artifact/Reports/**/Login_TestSuite/**/*.html"
 
+                    // reportUrl = reportUrl.replace("//","/")
+
+                    echo "reportUrl: ${reportUrl}"
+                    def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'"
+
+                    echo 'Build was Push or Pull Request '
+
+                    //acrchive artifacts
+                    archiveArtifacts allowEmptyArchive: true, artifacts: "Reports/**/Login_TestSuite/**/*.html"
 
                      // Get the list of files from the directory and sort them by modification date
                     def files = sh(script: "ls -t ${reportUrl}", returnStdout: true).trim().split('\n')
@@ -214,17 +223,6 @@ pipeline {
                         echo "Content of the latest file: \n${fileContent}"
 
                     }
-                    // reportUrl = reportUrl.replace("//","/")
-
-                    echo "reportUrl: ${reportUrl}"
-                    def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'"
-
-                    echo 'Build was Push or Pull Request '
-
-                    //acrchive artifacts
-                    archiveArtifacts allowEmptyArchive: true, artifacts: "Reports/**/Login_TestSuite/**/*.html"
-
-                    
                     //Make the HTTP request to post a comment
                     def response_comment = httpRequest(
                         url: commentUrl,
