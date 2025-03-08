@@ -250,7 +250,7 @@ pipeline {
                         httpMode: 'POST',
                         contentType: 'APPLICATION_JSON',
                         acceptType: 'APPLICATION_JSON',
-                        requestBody: requestBody,
+                        requestBody: groovy.json.JsonOutput.toJson(requestBody),
                        customHeaders: [
                             [name: 'Authorization', value: "Bearer ${token}"],
                         ]
