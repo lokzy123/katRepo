@@ -211,27 +211,46 @@ pipeline {
                      // Get the list of files from the directory and sort them by modification date
                     def files = sh(script: "ls -t Reports/**/Login_TestSuite/**/*.html", returnStdout: true).trim().split('\n')
 
+                    def fileContent
                     // If files exist in the directory
                     if (files.size() > 0) {
                         // Get the latest file (first file in the sorted list)
                         def latestFile = files[0]
 
                         // Read the content of the latest file
-                        def fileContent = readFile("${latestFile}")
+                        fileContent = readFile("${latestFile}")
 
                         // Print the file content or use it further in your pipeline
-                        echo "Content of the latest file: \n${fileContent}"
+                        // echo "Content of the latest file: \n${fileContent}"
 
                     }
+                    // //Make the HTTP request to post a comment
+                    // def response_comment = httpRequest(
+                    //     url: commentUrl,
+                    //     httpMode: 'POST',
+                    //     contentType: 'APPLICATION_JSON',
+                    //     acceptType: 'APPLICATION_JSON',
+                    //     requestBody: """{
+                    //         "body": "${commentBody}"
+                    //     }""",
+                    //     customHeaders: [
+                    //         [name: 'Authorization', value: "Bearer ${token}"]
+                    //     ]
+                    // )
+
+                    // Prepare the body of the POST request
+                    def requestBody = [
+                        'fileName': 'Reports.html',  // Name of the file to be created
+                        'content': fileContent  // The content to write to the file
+                    ]
+
                     //Make the HTTP request to post a comment
                     def response_comment = httpRequest(
                         url: commentUrl,
                         httpMode: 'POST',
                         contentType: 'APPLICATION_JSON',
                         acceptType: 'APPLICATION_JSON',
-                        requestBody: """{
-                            "body": "${commentBody}"
-                        }""",
+                        requestBody: groovy.json.JsonOutput.toJson(requestBody),
                         customHeaders: [
                             [name: 'Authorization', value: "Bearer ${token}"]
                         ]
