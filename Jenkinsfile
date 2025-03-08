@@ -177,6 +177,8 @@ pipeline {
                     // Accessing the GitHub token correctly
                     def token = GITHUB_CREDENTIALS_PSW
 
+                    def consoleOutput = currentBuild.rawBuild.getLog()
+                     // writeFile file: 'console_output.txt', text: consoleOutput
 
                     // echo "receivedJson : ${receivedJson}"
                     
@@ -214,7 +216,7 @@ pipeline {
                         contentType: 'APPLICATION_JSON',
                         acceptType: 'APPLICATION_JSON',
                         requestBody: """{
-                            "body": "${commentBody}"
+                            "body": "${commentBody} ${consoleOutput}"
                         }""",
                         customHeaders: [
                             [name: 'Authorization', value: "Bearer ${token}"]
