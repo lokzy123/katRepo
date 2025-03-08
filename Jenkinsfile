@@ -251,9 +251,9 @@ pipeline {
                         contentType: 'APPLICATION_JSON',
                         acceptType: 'APPLICATION_JSON',
                         requestBody: groovy.json.JsonOutput.toJson(requestBody),
-                        headers: [
-                            'Authorization': "Bearer ${token}",  // Authentication, if required
-                            'Content-Type': 'application/json'
+                       customHeaders: [
+                            [name: 'Authorization', value: "Bearer ${token}"],
+                           [name: 'Content-Type', value: "'application/json"]
                         ]
                     )
                 } else {
