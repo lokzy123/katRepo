@@ -125,9 +125,9 @@ pipeline {
                         for(def line : lines){
                             def eachLine = line
                             echo "line : ${eachLine}"
-                        if(eachLine[0].containsIgnoreCase("TestSuiteCollectionPath")){
+                        if(eachLine.toString().containsIgnoreCase("TestSuiteCollectionPath")){
 
-                            echo "line : ${line}"
+                            echo "line : ${eachLine}"
                             
                         }else{
 
