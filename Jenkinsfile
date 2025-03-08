@@ -142,11 +142,23 @@ pipeline {
                         for(def line : lines){
                             echo "line : ${line}"
                         if(line.contains(testSuiteVar)){
+                         testSuitePath = line.split(":")[1].trim()
 
-                            echo "line : ${line}"
+                            echo "testSuitePath : ${testSuitePath}"
                             
-                        }else{
+                        }else if(line.contains(testSuiteCollectionVar)){
 
+                           testSuiteCollectionPath = line.split(":")[1].trim()
+
+                            echo "testSuiteCollectionPath : ${testSuiteCollectionPath}"
+                        }else if(line.contains(exeProfile)){
+                            exeProfile = line.split(":")[1].trim()
+
+                            echo "exeProfile : ${exeProfile}"
+                        }else if(line.contains(browserType)){
+                            browser = line.split(":")[1].trim()
+
+                            echo "browser : ${browser}"
                         }
                         }
 
@@ -184,7 +196,7 @@ pipeline {
                     // Construct the Jenkins artifact URL (adjust it to your Jenkins URL)
                     def reportUrl = "${reportPath}/${buildNumber}/artifact/Reports/**/Login_TestSuite/**/*.html"
 
-                    reportUrl = reportUrl.replace("//","/")
+                    // reportUrl = reportUrl.replace("//","/")
 
                     echo "reportUrl: ${reportUrl}"
                     def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'"
