@@ -117,6 +117,7 @@ pipeline {
 
                         def prDescription = receivedJson.body
 
+                        prDescription = prDescription[0]
                         //Print description of PR
                         echo "prDescription : ${prDescription}"
 
