@@ -9,7 +9,7 @@ def testSuitePath = ''
 
 def testSuiteCollectionPath = ''
 
-def browserType = ''
+def browser = ''
 
 def profile = ''
 
