@@ -123,8 +123,9 @@ pipeline {
 
                         def lines = prDescription.split("\n|\r")
                         for(def line : lines){
-                            echo "line : ${line[0]}"
-                        if(line.containsIgnoreCase("TestSuiteCollectionPath")){
+                            def eachLine = ${line}
+                            echo "line : ${eachLine}"
+                        if(eachLine[0].containsIgnoreCase("TestSuiteCollectionPath")){
 
                             echo "line : ${line}"
                             
