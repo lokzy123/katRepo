@@ -177,7 +177,7 @@ pipeline {
                     // Accessing the GitHub token correctly
                     def token = GITHUB_CREDENTIALS_PSW
 
-                    def consoleOutput = currentBuild.rawBuild.getLog(1000).join('\n')
+                    // def consoleOutput = currentBuild.rawBuild.getLog(1000).join('\n')
                      // writeFile file: 'console_output.txt', text: consoleOutput
 
                     // echo "receivedJson : ${receivedJson}"
@@ -197,6 +197,21 @@ pipeline {
 
                     // Construct the Jenkins artifact URL (adjust it to your Jenkins URL)
                     def reportUrl = "${reportPath}/${buildNumber}/artifact/Reports/**/Login_TestSuite/**/*.html"
+
+
+                     // Get the list of files from the directory and sort them by modification date
+                    def files = sh(script: "ls -t ${reportUrl}", returnStdout: true).trim().split('\n')
+
+                    // If files exist in the directory
+                    if (files.size() > 0) {
+                        // Get the latest file (first file in the sorted list)
+                        def latestFile = files[0]
+
+                        // Read the content of the latest file
+                        def fileContent = readFile("${reportUrl}/${latestFile}")
+
+                        // Print the file content or use it further in your pipeline
+                        echo "Content of the latest file: \n${fileContent}"
 
                     // reportUrl = reportUrl.replace("//","/")
 
