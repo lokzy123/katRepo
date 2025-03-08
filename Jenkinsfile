@@ -217,7 +217,7 @@ pipeline {
                         def latestFile = files[0]
 
                         // Read the content of the latest file
-                        def fileContent = readFile("${reportUrl}/${latestFile}")
+                        def fileContent = readFile("${latestFile}")
 
                         // Print the file content or use it further in your pipeline
                         echo "Content of the latest file: \n${fileContent}"
