@@ -251,7 +251,7 @@ pipeline {
                         httpMode: 'POST',
                         contentType: 'APPLICATION_JSON',
                         acceptType: 'APPLICATION_JSON',
-                        requestBody: '{"fileContent": "' + encodedFile + '"}',
+                        requestBody: {"fileContent": "${encodedFile}"},
                        customHeaders: [
                             [name: 'Authorization', value: "Bearer ${token}"],
                         ]
