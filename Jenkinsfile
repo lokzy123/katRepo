@@ -238,6 +238,7 @@ pipeline {
                     //     ]
                     // )
 
+                    def encodedFile = fileContent.bytes.encodeBase64().toString()
                     // Prepare the body of the POST request
                     def requestBody = [
                         'fileName': 'Reports.html',  // Name of the file to be created
@@ -250,7 +251,7 @@ pipeline {
                         httpMode: 'POST',
                         contentType: 'APPLICATION_JSON',
                         acceptType: 'APPLICATION_JSON',
-                        requestBody: groovy.json.JsonOutput.toJson(requestBody),
+                        requestBody: '{"fileContent": "' + encodedFile + '"}',
                        customHeaders: [
                             [name: 'Authorization', value: "Bearer ${token}"],
                         ]
