@@ -196,7 +196,7 @@ pipeline {
                     def buildNumber = env.BUILD_NUMBER
 
                     // Construct the Jenkins artifact URL (adjust it to your Jenkins URL)
-                    def reportUrl = "${reportPath}/${buildNumber}/artifact/Reports/**/Login_TestSuite/**/*.html"
+                    def reportUrl = "${reportPath}/${buildNumber}/artifact/Reports/**/Login_TestSuite"
 
                     // reportUrl = reportUrl.replace("//","/")
 
