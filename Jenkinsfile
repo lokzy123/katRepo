@@ -213,6 +213,7 @@ pipeline {
                         // Print the file content or use it further in your pipeline
                         echo "Content of the latest file: \n${fileContent}"
 
+                    }
                     // reportUrl = reportUrl.replace("//","/")
 
                     echo "reportUrl: ${reportUrl}"
