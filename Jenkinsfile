@@ -196,7 +196,7 @@ pipeline {
                     def buildNumber = env.BUILD_NUMBER
 
                     // Construct the Jenkins artifact URL (adjust it to your Jenkins URL)
-                    def reportUrl = "${reportPath}/${buildNumber}/artifact/Reports/**/Login_TestSuite"
+                    def reportUrl = "${reportPath}/${buildNumber}/artifact/Reports/**/Login_TestSuite/**/*.html"
 
                     // reportUrl = reportUrl.replace("//","/")
 
@@ -209,7 +209,7 @@ pipeline {
                     archiveArtifacts allowEmptyArchive: true, artifacts: "Reports/**/Login_TestSuite/**/*.html"
 
                      // Get the list of files from the directory and sort them by modification date
-                    def files = sh(script: "ls -t ${reportUrl}", returnStdout: true).trim().split('\n')
+                    def files = sh(script: "ls -t Reports/**/Login_TestSuite/**/*.html", returnStdout: true).trim().split('\n')
 
                     // If files exist in the directory
                     if (files.size() > 0) {
