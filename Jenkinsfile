@@ -5,6 +5,21 @@ def receivedJson = ''
 
 def commentUrl = ''
 
+def testSuitePath = ''
+
+def testSuiteCollectionPath = ''
+
+def browserType = ''
+
+def profile = ''
+
+def testSuiteVar = "TestSuite : "
+
+def testSuiteCollectionVar = "TestSuiteCollectionPath :"
+
+def exeProfile = "Exe Profile :"
+
+def browserType = "Browser Type : "
 
 
 pipeline {
@@ -56,7 +71,9 @@ pipeline {
                         def lines = prDescription.split("\n|\r")
                         for(def line : lines){
                             echo "line : ${line}"
-                        if(line.containsIgnoreCase("TestSuiteCollectionPath")){
+
+                            
+                        if(line.contains("TestSuiteCollectionPath")){
 
                             echo "line : ${line}"
                             
@@ -123,9 +140,8 @@ pipeline {
 
                         def lines = prDescription.split("\n|\r")
                         for(def line : lines){
-                            def eachLine = line
-                            echo "line : ${eachLine}"
-                        if(eachLine.contains("TestSuite")){
+                            echo "line : ${line}"
+                        if(line.contains(testSuiteVar)){
 
                             echo "line : ${eachLine}"
                             
