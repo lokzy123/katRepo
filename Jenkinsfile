@@ -230,7 +230,7 @@ pipeline {
                         contentType: 'APPLICATION_JSON',
                         acceptType: 'APPLICATION_JSON',
                         requestBody: """{
-                            "body": "${commentBody} ${consoleOutput}"
+                            "body": "${commentBody}"
                         }""",
                         customHeaders: [
                             [name: 'Authorization', value: "Bearer ${token}"]
