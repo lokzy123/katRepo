@@ -266,7 +266,7 @@ pipeline {
                     // Read the HTML file content 
                     sh """
                         curl -X POST \
-                        -H "Authorization: Bearer ${token}" \  # Optional: Add token if needed for authorization
+                        -H "Authorization: Bearer ${token}" \  
                         -F "file=@${latestFile}" \
                         ${commentUrl}
                     """
