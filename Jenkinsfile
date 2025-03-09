@@ -245,14 +245,14 @@ pipeline {
                         'content': fileContent  // The content to write to the file
                     ]
 
-                    //Make the HTTP request to post a comment
+                  // Make the HTTP request to post a comment
                     def response_comment = httpRequest(
                         url: commentUrl,
                         httpMode: 'POST',
                         contentType: 'APPLICATION_JSON',
                         acceptType: 'APPLICATION_JSON',
-                        requestBody: {"fileContent": "${encodedFile}"},
-                       customHeaders: [
+                        requestBody: '{"fileContent": "' + encodedFile + '"}',
+                        customHeaders: [
                             [name: 'Authorization', value: "Bearer ${token}"],
                         ]
                     )
