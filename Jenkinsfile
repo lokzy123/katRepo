@@ -223,7 +223,7 @@ pipeline {
 
                         echo "latestFile : ${latestFile}"
                         // Read the content of the latest file
-                        fileContent = readFile("${latestFile}").bytes
+                        fileContent = readFile("${latestFile}")
 
                         htmlContent = readFile(latestFile).bytes
                         // Print the file content or use it further in your pipeline
@@ -246,29 +246,35 @@ pipeline {
 
                     def encodedFile = java.util.Base64.getEncoder().encodeToString(fileContent)
                     // Prepare the body of the POST request
-                    def requestBody = [
-                          // Name of the file to be created
-                        'content': encodedFile  // The content to write to the file
-                    ]
+                    // def requestBody = [
+                    //       // Name of the file to be created
+                    //     'content': encodedFile  // The content to write to the file
+                    // ]
 
-                  // // Make the HTTP request to post a comment
-                  //   def response_comment = httpRequest(
-                  //       url: commentUrl,
-                  //       httpMode: 'POST',
-                  //       contentType: 'text/html',
-                  //       acceptType: 'APPLICATION_JSON',
-                  //       requestBody: fileContent,
-                  //       customHeaders: [
-                  //           [name: 'Authorization', value: "Bearer ${token}"],
-                  //       ]
-                  //   )
+                     def requestBody = """
+                                             {
+                                                 "file": "${fileContent}"
+                                             }
+                                             """
+
+                  // Make the HTTP request to post a comment
+                    def response_comment = httpRequest(
+                        url: commentUrl,
+                        httpMode: 'POST',
+                        contentType: 'text/html',
+                        acceptType: 'APPLICATION_JSON',
+                        requestBody: requestBody,
+                        customHeaders: [
+                            [name: 'Authorization', value: "Bearer ${token}"],
+                        ]
+                    )
 
                     // Read the HTML file content 
-                    sh """
-                        curl -X POST ${commentUrl}
-                        -H "Authorization: Bearer ${token}" 
-                        -F "file=@${latestFile}" 
-                    """
+                    // sh """
+                    //     curl -X POST ${commentUrl}
+                    //     -H "Authorization: Bearer ${token}" 
+                    //     -F "file=@${latestFile}" 
+                    // """
                 } else {
                     
                     
