@@ -223,7 +223,7 @@ pipeline {
                         // Read the content of the latest file
                         fileContent = readFile("${latestFile}").bytes
 
-                        htmlContent = readFile(latestFile)
+                        htmlContent = readFile(latestFile).bytes
                         // Print the file content or use it further in your pipeline
                         // echo "Content of the latest file: \n${fileContent}"
 
@@ -269,7 +269,7 @@ pipeline {
                         curl -X POST ${commentUrl} \\
                         -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \\
                         -H "Content-Type: text/html" \\
-                        -d "${htmlContent}"
+                        -d "${encodedFile}"
                     """
                 } else {
                     
