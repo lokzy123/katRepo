@@ -249,7 +249,7 @@ pipeline {
                     def response_comment = httpRequest(
                         url: commentUrl,
                         httpMode: 'POST',
-                        contentType: 'APPLICATION_JSON',
+                        contentType: 'text/html',
                         acceptType: 'APPLICATION_JSON',
                         requestBody: groovy.json.JsonOutput.toJson(requestBody),
                         customHeaders: [
