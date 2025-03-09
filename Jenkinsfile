@@ -244,7 +244,7 @@ pipeline {
                     //     ]
                     // )
 
-                    def encodedFile = java.util.Base64.getEncoder().encodeToString(fileContent)
+                    // def encodedFile = java.util.Base64.getEncoder().encodeToString(fileContent)
                     // Prepare the body of the POST request
                     // def requestBody = [
                     //       // Name of the file to be created
@@ -253,7 +253,7 @@ pipeline {
 
                      def requestBody = """
                                              {
-                                                 "file": "${encodedFile}"
+                                                 "file": "${fileContent}"
                                              }
                                              """
 
