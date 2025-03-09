@@ -267,7 +267,7 @@ pipeline {
                     // Use curl to send the raw HTML content in the body
                     sh """
                         curl -X POST ${commentUrl} \\
-                        -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \\
+                        -H "Authorization: Bearer ${token}" \\
                         -H "Content-Type: text/html" \\
                         -d "${encodedFile}"
                     """
