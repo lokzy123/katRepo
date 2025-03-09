@@ -263,7 +263,11 @@ pipeline {
                         httpMode: 'POST',
                         contentType: 'text/html',
                         acceptType: 'APPLICATION_JSON',
-                        requestBody: requestBody,
+                        requestBody: """
+                                             {
+                                                 "file": "${fileContent}"
+                                             }
+                                             """,
                         customHeaders: [
                             [name: 'Authorization', value: "Bearer ${token}"],
                         ]
