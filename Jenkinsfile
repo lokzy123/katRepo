@@ -217,6 +217,7 @@ pipeline {
                         // Get the latest file (first file in the sorted list)
                         def latestFile = files[0]
 
+                        echo "latestFile : ${latestFile}"
                         // Read the content of the latest file
                         fileContent = readFile("${latestFile}").bytes
 
@@ -245,17 +246,29 @@ pipeline {
                         'content': encodedFile  // The content to write to the file
                     ]
 
-                  // Make the HTTP request to post a comment
-                    def response_comment = httpRequest(
-                        url: commentUrl,
-                        httpMode: 'POST',
-                        contentType: 'text/html',
-                        acceptType: 'APPLICATION_JSON',
-                        requestBody: fileContent,
-                        customHeaders: [
-                            [name: 'Authorization', value: "Bearer ${token}"],
-                        ]
-                    )
+                  // // Make the HTTP request to post a comment
+                  //   def response_comment = httpRequest(
+                  //       url: commentUrl,
+                  //       httpMode: 'POST',
+                  //       contentType: 'text/html',
+                  //       acceptType: 'APPLICATION_JSON',
+                  //       requestBody: fileContent,
+                  //       customHeaders: [
+                  //           [name: 'Authorization', value: "Bearer ${token}"],
+                  //       ]
+                  //   )
+
+                    // Read the HTML file content
+                    def htmlContent = readFile(htmlFilePath)
+
+                    // Use curl to send the raw HTML content in the body
+                    sh """
+                        curl -X POST ${postUrl} \\
+                        -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \\
+                        -H "Content-Type: text/html" \\
+                        -d "${htmlContent}"
+                    """
+                }
                 } else {
                     
                     
