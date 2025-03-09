@@ -214,10 +214,12 @@ pipeline {
                     def fileContent
 
                     def htmlContent 
+
+                    def latestFile 
                     // If files exist in the directory
                     if (files.size() > 0) {
                         // Get the latest file (first file in the sorted list)
-                        def latestFile = files[0]
+                        latestFile = files[0]
 
                         echo "latestFile : ${latestFile}"
                         // Read the content of the latest file
@@ -262,14 +264,11 @@ pipeline {
                   //   )
 
                     // Read the HTML file content 
-                    
-
-                    // Use curl to send the raw HTML content in the body
                     sh """
-                        curl -X POST ${commentUrl} \\
-                        -H "Authorization: Bearer ${token}" \\
-                        -H "Content-Type: APPLICATION_JSON" \\
-                        -d "${encodedFile}"
+                        curl -X POST \
+                        -H "Authorization: Bearer ${token}" \  # Optional: Add token if needed for authorization
+                        -F "file=@${latestFile}" \
+                        ${commentUrl}
                     """
                 } else {
                     
