@@ -242,7 +242,7 @@ pipeline {
                     // Prepare the body of the POST request
                     def requestBody = [
                           // Name of the file to be created
-                        'content': encodedFile  // The content to write to the file
+                        'content': fileContent  // The content to write to the file
                     ]
 
                   // Make the HTTP request to post a comment
