@@ -221,6 +221,7 @@ pipeline {
                         // Read the content of the latest file
                         fileContent = readFile("${latestFile}").bytes
 
+                        def htmlContent = readFile(latestFile)
                         // Print the file content or use it further in your pipeline
                         // echo "Content of the latest file: \n${fileContent}"
 
@@ -259,7 +260,7 @@ pipeline {
                   //   )
 
                     // Read the HTML file content
-                    def htmlContent = readFile(htmlFilePath)
+                    
 
                     // Use curl to send the raw HTML content in the body
                     sh """
@@ -268,7 +269,6 @@ pipeline {
                         -H "Content-Type: text/html" \\
                         -d "${htmlContent}"
                     """
-                }
                 } else {
                     
                     
