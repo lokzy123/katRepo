@@ -241,8 +241,8 @@ pipeline {
                     def encodedFile = java.util.Base64.getEncoder().encodeToString(fileContent)
                     // Prepare the body of the POST request
                     def requestBody = [
-                        'fileName': 'Reports.html',  // Name of the file to be created
-                        'content': fileContent  // The content to write to the file
+                          // Name of the file to be created
+                        'content': encodedFile  // The content to write to the file
                     ]
 
                   // Make the HTTP request to post a comment
@@ -251,7 +251,7 @@ pipeline {
                         httpMode: 'POST',
                         contentType: 'APPLICATION_JSON',
                         acceptType: 'APPLICATION_JSON',
-                        requestBody: '{"fileContent": "' + encodedFile + '"}',
+                        requestBody: groovy.json.JsonOutput.toJson(requestBody),
                         customHeaders: [
                             [name: 'Authorization', value: "Bearer ${token}"],
                         ]
