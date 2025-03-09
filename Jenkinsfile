@@ -253,7 +253,7 @@ pipeline {
 
                      def requestBody = """
                                              {
-                                                 "file": "${fileContent}"
+                                                 "file": "${encodedFile}"
                                              }
                                              """
 
