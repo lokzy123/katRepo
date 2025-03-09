@@ -268,7 +268,7 @@ pipeline {
                     sh """
                         curl -X POST ${commentUrl} \\
                         -H "Authorization: Bearer ${token}" \\
-                        -H "Content-Type: text/html" \\
+                        -H "Content-Type: APPLICATION_JSON" \\
                         -d "${encodedFile}"
                     """
                 } else {
