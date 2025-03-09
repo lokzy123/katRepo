@@ -212,6 +212,8 @@ pipeline {
                     def files = sh(script: "ls -t Reports/**/Login_TestSuite/**/*.html", returnStdout: true).trim().split('\n')
 
                     def fileContent
+
+                    def htmlContent 
                     // If files exist in the directory
                     if (files.size() > 0) {
                         // Get the latest file (first file in the sorted list)
@@ -221,7 +223,7 @@ pipeline {
                         // Read the content of the latest file
                         fileContent = readFile("${latestFile}").bytes
 
-                        def htmlContent = readFile(latestFile)
+                        htmlContent = readFile(latestFile)
                         // Print the file content or use it further in your pipeline
                         // echo "Content of the latest file: \n${fileContent}"
 
@@ -264,7 +266,7 @@ pipeline {
 
                     // Use curl to send the raw HTML content in the body
                     sh """
-                        curl -X POST ${postUrl} \\
+                        curl -X POST ${commentUrl} \\
                         -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \\
                         -H "Content-Type: text/html" \\
                         -d "${htmlContent}"
