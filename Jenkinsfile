@@ -119,14 +119,14 @@ pipeline {
                         receivedJson = readJSON text: responseBody
 
                         echo "receivedJson : ${receivedJson}"
-                        // Get title from parsed json
-                        def title = receivedJson.title
-                        echo "Title: ${title}"
+                        // // Get title from parsed json
+                        // def title = receivedJson.title
+                        // echo "Title: ${title}"
                         
                         // Get story names from title
-                        def storyNames = title[0].toString().split(",")
+                        // def storyNames = title[0].toString().split(",")
                         
-                        echo "Story Names: ${storyNames}"
+                        // echo "Story Names: ${storyNames}"
 
                         def review_comment_url = receivedJson.comments_url
                         commentUrl = review_comment_url[0]
@@ -139,6 +139,7 @@ pipeline {
                         echo "prDescription : ${prDescription}"
 
                         def lines = prDescription.split("\n|\r")
+                        
                         for(def line : lines){
                             echo "line : ${line}"
                         if(line.contains(testSuiteVar)){
@@ -164,7 +165,13 @@ pipeline {
 
                         isBuildExecuted = true
 
-                        // executeKatalon executeArgs: '-retry=0 -testSuitePath="Test Suites/Login_TestSuite" -browserType="Chrome" -executionProfile="default" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''
+                        if(testSuiteCollectionPath.equals(''){
+
+                        executeKatalon executeArgs: '-retry=0 -testSuitePath="Test Suites/Login_TestSuite" -browserType="Chrome" -executionProfile="default" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''
+
+                        } else{
+                             executeKatalon executeArgs: '-retry=0 -testSuitePath="${testSuitePath}" -browserType="Chrome" -executionProfile="default" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''
+                        }
                     }
                 }
             }
@@ -176,17 +183,6 @@ pipeline {
                 if (isBuildExecuted) {
                     // Accessing the GitHub token correctly
                     def token = GITHUB_CREDENTIALS_PSW
-
-                    // def consoleOutput = currentBuild.rawBuild.getLog(1000).join('\n')
-                     // writeFile file: 'console_output.txt', text: consoleOutput
-
-                    // echo "receivedJson : ${receivedJson}"
-                    
-                    // // Get the comments URL from the received JSON
-                    // def review_comment_url = receivedJson.comments_url
-                    
-                    // // In case the review_comment_url has multiple URLs, select the first one
-                    // def commentUrl = review_comment_url[0]
                     
                     echo "Comments URL: ${commentUrl}"
 
@@ -208,40 +204,40 @@ pipeline {
                     //acrchive artifacts
                     archiveArtifacts allowEmptyArchive: true, artifacts: "Reports/**/Login_TestSuite/**/*.html"
 
-                     // Get the list of files from the directory and sort them by modification date
-                    def files = sh(script: "ls -t Reports/**/Login_TestSuite/**/*.html", returnStdout: true).trim().split('\n')
+                    //  // Get the list of files from the directory and sort them by modification date
+                    // def files = sh(script: "ls -t Reports/**/Login_TestSuite/**/*.html", returnStdout: true).trim().split('\n')
 
-                    def fileContent
+                    // def fileContent
 
-                    def htmlContent 
+                    // def htmlContent 
 
-                    def latestFile 
-                    // If files exist in the directory
-                    if (files.size() > 0) {
-                        // Get the latest file (first file in the sorted list)
-                        latestFile = files[0]
+                    // def latestFile 
+                    // // If files exist in the directory
+                    // if (files.size() > 0) {
+                    //     // Get the latest file (first file in the sorted list)
+                    //     latestFile = files[0]
 
-                        echo "latestFile : ${latestFile}"
-                        // Read the content of the latest file
-                        fileContent = readFile("${latestFile}")
+                    //     echo "latestFile : ${latestFile}"
+                    //     // Read the content of the latest file
+                    //     fileContent = readFile("${latestFile}")
 
-                        htmlContent = readFile(latestFile).bytes
-                        // Print the file content or use it further in your pipeline
-                        // echo "Content of the latest file: \n${fileContent}"
+                    //     htmlContent = readFile(latestFile).bytes
+                    //     // Print the file content or use it further in your pipeline
+                    //     // echo "Content of the latest file: \n${fileContent}"
 
-                    }
-                    // //Make the HTTP request to post a comment
-                    // def response_comment = httpRequest(
-                    //     url: commentUrl,
-                    //     httpMode: 'POST',
-                    //     contentType: 'APPLICATION_JSON',
-                    //     acceptType: 'APPLICATION_JSON',
-                    //     requestBody: """{
-                    //         "body": "${commentBody}"
-                    //     }""",
-                    //     customHeaders: [
-                    //         [name: 'Authorization', value: "Bearer ${token}"]
-                    //     ]
+                    // }
+                    //Make the HTTP request to post a comment
+                    def response_comment = httpRequest(
+                        url: commentUrl,
+                        httpMode: 'POST',
+                        contentType: 'APPLICATION_JSON',
+                        acceptType: 'APPLICATION_JSON',
+                        requestBody: """{
+                            "body": "${commentBody}"
+                        }""",
+                        customHeaders: [
+                            [name: 'Authorization', value: "Bearer ${token}"]
+                        ]
                     // )
 
                     // def encodedFile = java.util.Base64.getEncoder().encodeToString(fileContent)
@@ -276,8 +272,6 @@ pipeline {
                     //     -F "file=@${latestFile}" 
                     // """ 
                 } else {
-                    
-                    
                     echo 'Build neither got a Execute Job Command nor a Pull Request'
                 }
             }
