@@ -1,5 +1,17 @@
 // Define a global Groovy variable outside the pipeline block
-def isBuildExecuted = false  // Global Boolean variable 
+def executeBuild = false  // Global Boolean variable 
+
+def defaultSuite = false
+
+def defaultCollection = false
+
+def defaultSuitePath = "Test Suites/Login_TestSuite"
+
+def defaultCollectionPath = "Test Suites/Test Suite Collection 1"
+
+def defaultBrowser = 'Chrome'
+
+def defaultProfile = 'default'
 
 def receivedJson = ''
 
@@ -21,6 +33,8 @@ def exeProfile = "Exe Profile :"
 
 def browserType = "Browser Type : "
 
+def prDescription = ''
+
 
 pipeline {
     agent any
@@ -29,14 +43,6 @@ pipeline {
         GITHUB_CREDENTIALS = credentials('git-token')  // Directly using the credential ID to access the token
 
     }
-
-// parameters {
-//         string(name: 'testSuitePath', defaultValue: 'Test Suites/Login_TestSuite', description: 'Path to the test suite')
-//         string(name: 'browser', defaultValue: 'Chrome1', description: 'Browser type for the test')
-//         string(name: 'profile', defaultValue: 'default', description: 'Execution profile')
-//         string(name: 'apiKey', defaultValue: 'b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e', description: 'API key for authentication')
-//         string(name: 'xvfbConfiguration', defaultValue: '', description: 'Xvfb configuration')
-//     }
     stages {
         stage('New PR Opened'){
             steps{
@@ -68,8 +74,11 @@ pipeline {
                         //Print URL on Console
                         echo "commentUrl : ${commentUrl}"
 
+			'Get Decription of PR'
+                        prDescription = receivedJson.body
+
                         //Mark build executed flag true
-                        isBuildExecuted = true
+                        executeBuild = true
 
                         //Execution command to execute test suite
                         // executeKatalon executeArgs: '-retry=0 -testSuitePath="Test Suites/Login_TestSuite" -browserType="Chrome" -executionProfile="default" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''
@@ -117,14 +126,62 @@ pipeline {
 						
                         echo "commentUrl : ${commentUrl}"
 
-						'get'
+			'Get description of PR'
                         def prDescription = receivedJson.body
 
                         prDescription = prDescription[0]
                         //Print description of PR
                         echo "prDescription : ${prDescription}"
 
-                        def lines = prDescription.split("\n|\r")
+   //                      def lines = prDescription.split("\n|\r")
+                        
+   //                      for(def line : lines){
+   //                          echo "line : ${line}"
+			// if(!line.isEmpty()){
+   //                      if(line.contains(testSuiteVar) && (!(line.split(":")[1].trim()).equals(''))){
+   //                       testSuitePath = line.split(":")[1].trim()
+
+   //                          echo "testSuitePath : ${testSuitePath}"
+                            
+   //                      }else if(line.contains(testSuiteCollectionVar) && (!(line.split(":")[1].trim()).equals(''))){
+
+   //                         testSuiteCollectionPath = line.split(":")[1].trim()
+
+   //                          echo "testSuiteCollectionPath : ${testSuiteCollectionPath}"
+   //                      }else if(line.contains(exeProfile) && (!(line.split(":")[1].trim()).equals(''))){
+   //                          exeProfile = line.split(":")[1].trim()
+
+   //                          echo "exeProfile : ${exeProfile}"
+   //                      }else if(line.contains(browserType) && (!(line.split(":")[1].trim()).equals(''))){
+   //                          browser = line.split(":")[1].trim()
+
+   //                          echo "browser : ${browser}"
+   //                      }
+			// else if(line.contains("defaultCollection")){
+   //                          defaultCollection = true
+   //                          echo "default collection is set to true"
+   //                      }
+			// }
+   //                      }
+
+			//     echo "testSuitePath : ${testSuitePath}"
+			//     echo "testSuiteCollectionPath : ${testSuiteCollectionPath}"
+			//     echo "exeProfile : ${exeProfile}"
+			//     echo "browser : ${browser}" 
+			    
+                        executeBuild = true
+
+			// executeKatalon executeArgs: '-retry=0 -testSuitePath="'+testSuitePath+'" -browserType="'+browser+'" -executionProfile="'+exeProfile+'" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''
+                       
+                    }
+                }
+            }
+        }
+	    	stage('Get Execution details') {
+			steps{
+				script {
+					if(executeBuild) {
+						def lines = prDescription.split("\n|\r")
                         
                         for(def line : lines){
                             echo "line : ${line}"
@@ -148,53 +205,58 @@ pipeline {
 
                             echo "browser : ${browser}"
                         }
-				}
+			else if(line.contains("defaultCollection")){
+                            defaultCollection = true
+                            echo "default collection is set to true"
+                        }
+			}
                         }
 
 			    echo "testSuitePath : ${testSuitePath}"
 			    echo "testSuiteCollectionPath : ${testSuiteCollectionPath}"
 			    echo "exeProfile : ${exeProfile}"
 			    echo "browser : ${browser}" 
-			    
-                        isBuildExecuted = true
-
-			    executeKatalon executeArgs: '-retry=0 -testSuitePath="'+testSuitePath+'" -browserType="'+browser+'" -executionProfile="'+exeProfile+'" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''
-                       
-                    }
-                }
-            }
-        }
-		// stage('Execution') {
-		// 	steps{
-		// 		script {
-		// 			if(isBuildExecuted) {
-		// 				executeKatalon executeArgs: '-retry=0 -testSuitePath='${testSuitePath}' -browserType='${browser}' -executionProfile='${exeProfile}' -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''
-		// 			}
-		// 		}
-		// 	}
-		// }
+					}
+				}
+			}
+		}
+		stage('Execution') {
+			steps{
+				script {
+					if(executeBuild) {
+						if(!testSuiteCollectionPath.equals("")){
+						executeKatalon executeArgs: '-retry=0 -testSuiteCollectionPath="'+testSuiteCollectionPath+'" -browserType="'+browser+'" -executionProfile="'+exeProfile+'" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''
+						}else if(!testSuitePath.equals("")){
+						executeKatalon executeArgs: '-retry=0 -testSuitePath="'+testSuitePath+'" -browserType="'+browser+'" -executionProfile="'+exeProfile+'" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''
+						}else if(defaultCollection){
+						executeKatalon executeArgs: '-retry=0 -testSuiteCollectionPath="'+defaultCollectionPath+'" -browserType="'+defaultBrowser+'" -executionProfile="'+defaultProfile+'" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''	
+						}else{
+						executeKatalon executeArgs: '-retry=0 -testSuitePath="'+defaultSuitePath+'" -browserType="'+defaultBrowser+'" -executionProfile="'+defaultProfile+'" -apiKey="b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true', location: '', version: '10.0.1', x11Display: '', xvfbConfiguration: ''		
+						}
+					}
+				}
+			}
+		}
 		
     }
     post {
         always {
             script {
-                if (isBuildExecuted) {
+                if (executeBuild) {
                     // Accessing the GitHub token correctly
                     def token = GITHUB_CREDENTIALS_PSW
                     
                     echo "Comments URL: ${commentUrl}"
 
                     // Set report path 
-                    def reportPath = env.JOB_URL
+                    def jobUrl = env.JOB_URL
 
                     def buildNumber = env.BUILD_NUMBER
 
                     // Construct the Jenkins artifact URL (adjust it to your Jenkins URL)
-                    def reportUrl = "${reportPath}/${buildNumber}/artifact/Reports/**/Login_TestSuite/**/*.html"
+                    def reportUrl = "${jobUrl}/${buildNumber}/artifact/Reports/**/Login_TestSuite/**/*.html"
 
                     // reportUrl = reportUrl.replace("//","/")
-
-                    echo "reportUrl: ${reportUrl}"
                     def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'"
 
                     echo 'Build was Push or Pull Request '
