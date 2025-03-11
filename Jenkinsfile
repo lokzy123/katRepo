@@ -15,9 +15,9 @@ def defaultReportPath = "Reports/**/Login_TestSuite/**/*.html"
 // Prefix variables for PR description to parse details
 def testSuiteVar = "TestSuite : "
 def testSuiteCollectionVar = "TestSuiteCollectionPath :"
-def exeProfile = "Exe Profile :"
+def exeProfileVar = "Exe Profile :"
 def browserType = "Browser Type : "
-def reportsPath = "Reports Path : "
+def reportsPathVar = "Reports Path : "
 
 // Variables to store data retrieved from the PR
 def receivedJson = ''
@@ -102,16 +102,16 @@ pipeline {
                                 } else if (line.contains(testSuiteCollectionVar) && !(line.split(":")[1].trim()).equals('')) {
                                     testSuiteCollectionPath = line.split(":")[1].trim()
                                     echo "testSuiteCollectionPath: ${testSuiteCollectionPath}"
-                                } else if (line.contains(exeProfile) && !(line.split(":")[1].trim()).equals('')) {
+                                } else if (line.contains(exeProfileVar) && !(line.split(":")[1].trim()).equals('')) {
                                     profile = line.split(":")[1].trim()
                                     echo "Execution Profile: ${profile}"
-                                } else if (line.contains(browserType) && !(line.split(":")[1].trim()).equals('')) {
+                                } else if (line.contains(browserTypeVar) && !(line.split(":")[1].trim()).equals('')) {
                                     browser = line.split(":")[1].trim()
                                     echo "Browser: ${browser}"
                                 } else if (line.contains("defaultCollection")) {
                                     defaultCollection = true
                                     echo "Default collection is set to true"
-                                } else if (line.contains(reportsPath) && !(line.split(":")[1].trim()).equals('')){
+                                } else if (line.contains(reportsPathVar) && !(line.split(":")[1].trim()).equals('')){
                                     reportsPath = line.split(":")[1].trim()
                                 }
                             }
