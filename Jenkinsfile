@@ -109,10 +109,10 @@ pipeline {
 
                         echo "receivedJson : ${receivedJson}"
                        
-						'get review comments url'
+			'get review comments url'
                         def review_comment_url = receivedJson.comments_url
 						
-						'Get comments url'
+			'Get comments url'
                         commentUrl = review_comment_url[0]
 						
                         echo "commentUrl : ${commentUrl}"
@@ -128,6 +128,7 @@ pipeline {
                         
                         for(def line : lines){
                             echo "line : ${line}"
+			if(line.isEmpty()){
                         if(line.contains(testSuiteVar) && (!(line.split(":")[1].trim()).equals(''))){
                          testSuitePath = line.split(":")[1].trim()
 
@@ -147,6 +148,7 @@ pipeline {
 
                             echo "browser : ${browser}"
                         }
+				}
                         }
 
 			    echo "testSuitePath : ${testSuitePath}"
