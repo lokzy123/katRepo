@@ -129,21 +129,21 @@ parameters {
                         for(def line : lines){
                             echo "line : ${line}"
                         if(line.contains(testSuiteVar)){
-                         params.testSuitePath = line.split(":")[1].trim()
+                         testSuitePath = line.split(":")[1].trim()
 
                             echo "testSuitePath : ${testSuitePath}"
                             
                         }else if(line.contains(testSuiteCollectionVar)){
 
-                           params.testSuiteCollectionPath = line.split(":")[1].trim()
+                           testSuiteCollectionPath = line.split(":")[1].trim()
 
                             echo "testSuiteCollectionPath : ${testSuiteCollectionPath}"
                         }else if(line.contains(exeProfile)){
-                            params.exeProfile = line.split(":")[1].trim()
+                            exeProfile = line.split(":")[1].trim()
 
                             echo "exeProfile : ${exeProfile}"
                         }else if(line.contains(browserType)){
-                            params.browser = line.split(":")[1].trim()
+                            browser = line.split(":")[1].trim()
 
                             echo "browser : ${browser}"
                         }
