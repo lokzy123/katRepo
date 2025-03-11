@@ -154,7 +154,7 @@ pipeline {
 			    echo "testSuitePath : ${testSuitePath}"
 			    echo "testSuiteCollectionPath : ${testSuiteCollectionPath}"
 			    echo "exeProfile : ${exeProfile}"
-			    echo "browser : ${browser}"
+			    echo "browser : ${browser}" 
 			    
                         isBuildExecuted = true
 
