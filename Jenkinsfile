@@ -158,7 +158,7 @@ pipeline {
                     def buildNumber = env.BUILD_NUMBER
 
                     def currentReportPath = ''
-                    if(!reportsPath.equals(""){
+                    if(!reportsPath.equals("")){
                         currentReportPath = reportsPath
                     }
                     def reportUrl = "${jobUrl}/${buildNumber}/artifact/${currentReportPath}"
