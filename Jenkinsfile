@@ -163,23 +163,24 @@ pipeline {
                     
                     currentReportPath = reportsPath
                     
-                    if(!reportsPath.equals("")){
-                        currentReportPath = ${defaultReportPath}
+                    if(reportsPath.equals("")){
+                        currentReportPath = defaultReportPath
+                    }else{
+                        currentReportPath = reportsPath
                     }
                     echo "currentReportPath: ${currentReportPath}"
                     echo "reportsPath: ${reportsPath}"
                     echo "defaultReportPath: ${defaultReportPath}"
+        
+                    // Archive artifacts
+                    archiveArtifacts allowEmptyArchive: true, artifacts: defaultReportPath
+
                     def reportUrl = "${jobUrl}/${buildNumber}/artifact/${currentReportPath}"
 
                     def consoleUrl = "${jobUrl}/${buildNumber}/console"
 
                     // Construct the comment body
                     def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl}) View Console : ${consoleUrl}'"
-                        
-                        
-
-                    // Archive artifacts
-                    archiveArtifacts allowEmptyArchive: true, artifacts: defaultReportPath
 
                     // Make HTTP request to post a comment on the PR
                     def response_comment = httpRequest(
