@@ -16,7 +16,7 @@ def defaultReportPath = "Reports/**/Login_TestSuite/**/*.html"
 def testSuiteVar = "TestSuite : "
 def testSuiteCollectionVar = "TestSuiteCollectionPath :"
 def exeProfileVar = "Exe Profile :"
-def browserType = "Browser Type : "
+def browserTypeVar = "Browser Type : "
 def reportsPathVar = "Reports Path : "
 
 // Variables to store data retrieved from the PR
