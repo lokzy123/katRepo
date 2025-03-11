@@ -127,7 +127,7 @@ pipeline {
                         echo "commentUrl : ${commentUrl}"
 
 			'Get description of PR'
-                        def prDescription = receivedJson.body
+                        prDescription = receivedJson.body
 
                         prDescription = prDescription[0]
                         //Print description of PR
