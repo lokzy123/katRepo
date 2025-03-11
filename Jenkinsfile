@@ -8,14 +8,16 @@ def defaultCollection = false
 // Default paths and configurations for the tests
 def defaultSuitePath = "Test Suites/Login_TestSuite"
 def defaultCollectionPath = "Test Suites/Test Suite Collection 1"
-def defaultBrowser = 'Chrome'
-def defaultProfile = 'default'
+def defaultBrowser = "Chrome"
+def defaultProfile = "default"
+def defaultReportPath = "Reports/**/Login_TestSuite/**/*.html"
 
 // Prefix variables for PR description to parse details
 def testSuiteVar = "TestSuite : "
 def testSuiteCollectionVar = "TestSuiteCollectionPath :"
 def exeProfile = "Exe Profile :"
 def browserType = "Browser Type : "
+def reportsPath = "Reports Path : "
 
 // Variables to store data retrieved from the PR
 def receivedJson = ''
@@ -25,6 +27,7 @@ def testSuiteCollectionPath = ''
 def browser = ''
 def profile = ''
 def prDescription = ''
+def reportsPath = ''
 
 pipeline {
     agent any
@@ -108,6 +111,8 @@ pipeline {
                                 } else if (line.contains("defaultCollection")) {
                                     defaultCollection = true
                                     echo "Default collection is set to true"
+                                } else if (line.contains(reportsPath) && !(line.split(":")[1].trim()).equals('')){
+                                    reportsPath = line.split(":")[1].trim()
                                 }
                             }
                         }
@@ -151,13 +156,18 @@ pipeline {
 
                     def jobUrl = env.JOB_URL
                     def buildNumber = env.BUILD_NUMBER
-                    def reportUrl = "${jobUrl}/${buildNumber}/artifact/Reports/**/Login_TestSuite/**/*.html"
+
+                    def currentReportPath = ''
+                    if(!reportsPath.equals(""){
+                        currentReportPath = reportsPath
+                    }
+                    def reportUrl = "${jobUrl}/${buildNumber}/artifact/${currentReportPath}"
 
                     // Construct the comment body
                     def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'"
 
                     // Archive artifacts
-                    archiveArtifacts allowEmptyArchive: true, artifacts: "Reports/**/Login_TestSuite/**/*.html"
+                    archiveArtifacts allowEmptyArchive: true, artifacts: "${currentReportPath}"
 
                     // Make HTTP request to post a comment on the PR
                     def response_comment = httpRequest(
