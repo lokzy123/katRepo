@@ -76,7 +76,7 @@ pipeline {
                         receivedJson = readJSON text: responseBody
                         commentUrl = receivedJson.comments_url[0]
                         prDescription = receivedJson.body
-
+                        prDescription = prDescription[0]
                         // Set executeBuild flag to true
                         executeBuild = true
                     }
