@@ -133,9 +133,11 @@ pipeline {
                     if (executeBuild) {
                         echo "Browser: ${browser}"
                         // Choose which Katalon command to run based on the test suite or collection path
-                        // if (!testSuiteCollectionPath.equals("")) {
-                        //     executeKatalon executeArgs: "-retry=0 -testSuiteCollectionPath=\"${testSuiteCollectionPath}\" -browserType=\"${browser}\" -executionProfile=\"${profile}\" -apiKey=\"b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
-                        // } 
+                        if (!testSuiteCollectionPath.equals("")) {
+                             def result = sh(script: 'katalon -retry=0 -testSuiteCollectionPath=\"${testSuiteCollectionPath}\" -browserType=\"${browser}\" -executionProfile=\"${profile}\" -apiKey=\"b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1')
+                            echo "result: ${result}"
+                            // executeKatalon executeArgs: "-retry=0 -testSuiteCollectionPath=\"${testSuiteCollectionPath}\" -browserType=\"${browser}\" -executionProfile=\"${profile}\" -apiKey=\"b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
+                        } 
                         // else if (!testSuitePath.equals("")) {
                         //     executeKatalon executeArgs: "-retry=0 -testSuitePath=\"${testSuitePath}\" -browserType=\"${browser}\" -executionProfile=\"${profile}\" -apiKey=\"b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
                         // } else if (defaultCollection) {
