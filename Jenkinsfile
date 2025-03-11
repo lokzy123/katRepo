@@ -170,8 +170,7 @@ pipeline {
                     def consoleUrl = "${jobUrl}/${buildNumber}/console"
 
                     // Construct the comment body
-                    def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'" + "\n"
-                    + "View Console : ${consoleUrl"
+                    def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})' \n View Console : ${consoleUrl"
                         
                         
 
