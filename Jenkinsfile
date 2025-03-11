@@ -164,9 +164,11 @@ pipeline {
                     currentReportPath = reportsPath
                     
                     if(!reportsPath.equals("")){
-                        currentReportPath = defaultReportPath
+                        currentReportPath = ${defaultReportPath}
                     }
                     echo "currentReportPath: ${currentReportPath}"
+                    echo "reportsPath: ${reportsPath}"
+                    echo "defaultReportPath: ${defaultReportPath}"
                     def reportUrl = "${jobUrl}/${buildNumber}/artifact/${currentReportPath}"
 
                     def consoleUrl = "${jobUrl}/${buildNumber}/console"
