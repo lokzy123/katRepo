@@ -128,7 +128,7 @@ pipeline {
                         
                         for(def line : lines){
                             echo "line : ${line}"
-			if(line.isEmpty()){
+			if(!line.isEmpty()){
                         if(line.contains(testSuiteVar) && (!(line.split(":")[1].trim()).equals(''))){
                          testSuitePath = line.split(":")[1].trim()
 
