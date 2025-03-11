@@ -1,5 +1,5 @@
 // Define a global Groovy variable outside the pipeline block
-def isBuildExecuted = false  // Global Boolean variable
+def isBuildExecuted = false  // Global Boolean variable 
 
 def receivedJson = ''
 
