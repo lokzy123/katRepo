@@ -176,7 +176,7 @@ pipeline {
                     archiveArtifacts allowEmptyArchive: true, artifacts: currentReportPath
                     
                     def files = sh(script: "ls -t Reports/**/Login_TestSuite/**/*.html", returnStdout: true).trim().split('\n')
-                    if(files>0){
+                    if(files.size()>0){
                         latestFile = files[0]
                     }
                     
