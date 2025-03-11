@@ -170,7 +170,7 @@ pipeline {
                     def commentBody = "'This is a comment from Jenkins! hey [View Katalon Test Report] :${reportUrl})'"
 
                     // Archive artifacts
-                    archiveArtifacts allowEmptyArchive: true, artifacts: "${currentReportPath}"
+                    archiveArtifacts allowEmptyArchive: true, artifacts: "Reports/**/Login_TestSuite/**/*.html"
 
                     // Make HTTP request to post a comment on the PR
                     def response_comment = httpRequest(
