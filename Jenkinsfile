@@ -173,9 +173,14 @@ pipeline {
                     echo "defaultReportPath: ${defaultReportPath}"
         
                     // Archive artifacts
-                    archiveArtifacts allowEmptyArchive: true, artifacts: defaultReportPath
-
-                    def reportUrl = "${jobUrl}/${buildNumber}/artifact/${currentReportPath}"
+                    archiveArtifacts allowEmptyArchive: true, artifacts: currentReportPath
+                    
+                    def files = sh(script: "ls -t Reports/**/Login_TestSuite/**/*.html", returnStdout: true).trim().split('\n')
+                    if(files>0){
+                        latestFile = files[0]
+                    }
+                    
+                    def reportUrl = "${jobUrl}/${buildNumber}/artifact/${latestFile}"
 
                     def consoleUrl = "${jobUrl}/${buildNumber}/console"
 
