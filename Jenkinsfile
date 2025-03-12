@@ -158,18 +158,18 @@ pipeline {
                     def jobUrl = env.JOB_URL
                     def buildNumber = env.BUILD_NUMBER
 
-                    def currentReportPath = ''
+                    // def currentReportPath = ''
                     
-                    currentReportPath = reportsPath
+                    // currentReportPath = reportsPath
                     
-                    if(reportsPath.equals("")){
-                        currentReportPath = defaultReportPath
-                    }else{
-                        currentReportPath = reportsPath
-                    }
-                    echo "currentReportPath: ${currentReportPath}"
-                    echo "reportsPath: ${reportsPath}"
-                    echo "defaultReportPath: ${defaultReportPath}"
+                    // if(reportsPath.equals("")){
+                    //     currentReportPath = defaultReportPath
+                    // }else{
+                    //     currentReportPath = reportsPath
+                    // }
+                    // echo "currentReportPath: ${currentReportPath}"
+                    // echo "reportsPath: ${reportsPath}"
+                    // echo "defaultReportPath: ${defaultReportPath}"
         
                     // Archive artifacts 
                     archiveArtifacts allowEmptyArchive: true, artifacts: "Reports/**/"
