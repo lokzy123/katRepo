@@ -10,7 +10,7 @@ def defaultSuitePath = "Test Suites/Login_TestSuite"
 def defaultCollectionPath = "Test Suites/Test Suite Collection 1"
 def defaultBrowser = "Chrome"
 def defaultProfile = "default"
-def defaultReportPath = "Reports/**/Login_TestSuite/**/"
+// def defaultReportPath = "Reports/**/Login_TestSuite/**/"
 
 // Prefix variables for PR description to parse details
 def testSuiteVar = "TestSuite : "
@@ -27,7 +27,7 @@ def testSuiteCollectionPath = ''
 def browser = ''
 def profile = ''
 def prDescription = ''
-def reportsPath = ''
+// def reportsPath = ''
 
 pipeline {
     agent any
