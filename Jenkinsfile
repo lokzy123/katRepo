@@ -171,7 +171,7 @@ pipeline {
                     echo "reportsPath: ${reportsPath}"
                     echo "defaultReportPath: ${defaultReportPath}"
         
-                    // Archive artifacts
+                    // Archive artifacts 
                     archiveArtifacts allowEmptyArchive: true, artifacts: currentReportPath
                     
                     def files = sh(script: "ls -t ${currentReportPath}", returnStdout: true).trim().split('\n')
