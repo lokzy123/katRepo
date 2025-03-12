@@ -10,7 +10,7 @@ def defaultSuitePath = "Test Suites/Login_TestSuite"
 def defaultCollectionPath = "Test Suites/Test Suite Collection 1"
 def defaultBrowser = "Chrome"
 def defaultProfile = "default"
-def defaultReportPath = "Reports/**/Login_TestSuite/**/*.html"
+def defaultReportPath = "Reports/**/Login_TestSuite/**/"
 
 // Prefix variables for PR description to parse details
 def testSuiteVar = "TestSuite : "
@@ -174,7 +174,7 @@ pipeline {
                     // Archive artifacts
                     archiveArtifacts allowEmptyArchive: true, artifacts: currentReportPath
                     
-                    def files = sh(script: "ls -t Reports/**/Login_TestSuite/**/*.html", returnStdout: true).trim().split('\n')
+                    def files = sh(script: "ls -t ${currentReportPath}", returnStdout: true).trim().split('\n')
                     if(files.size()>0){
                         latestFile = files[0]
                     }
