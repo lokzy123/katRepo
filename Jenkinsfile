@@ -91,7 +91,7 @@ pipeline {
             steps {
                 script {
                     if (executeBuild) {
-                        if(!prDescription.equals.("")){
+                        if(prDescription != null){
                         def lines = prDescription.split("\n|\r")
                         for (def line : lines) {
                             echo "Line: ${line}"
