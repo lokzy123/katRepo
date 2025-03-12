@@ -174,7 +174,7 @@ pipeline {
                     // Archive artifacts 
                     archiveArtifacts allowEmptyArchive: true, artifacts: "Reports/**/"
                     
-                    def files = sh(script: "ls -t ${currentReportPath}", returnStdout: true).trim().split('\n')
+                    def files = sh(script: "ls -t Reports/**/", returnStdout: true).trim().split('\n')
                     if(files.size()>0){
                         latestFile = files[0]
                     }
