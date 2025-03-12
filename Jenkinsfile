@@ -91,6 +91,7 @@ pipeline {
             steps {
                 script {
                     if (executeBuild) {
+                        if(!prDescription.equals.("")){
                         def lines = prDescription.split("\n|\r")
                         for (def line : lines) {
                             echo "Line: ${line}"
@@ -115,6 +116,7 @@ pipeline {
                                     reportsPath = line.split(":")[1].trim()
                                 }
                             }
+                        }
                         }
 
                         // Echo values for debug purposes
