@@ -1,0 +1,8 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+Demo Katalon Suite,Chrome 134.0.6998.89,,,12-03-2025 13:36:36,12-03-2025 13:36:43,6.396s,PASSED
+,,,,,,,
+Test Cases/Demo Katalon,Chrome 134.0.6998.89,,,12-03-2025 13:36:36,12-03-2025 13:36:43,6.321s,PASSED
+"openBrowser("""")",Chrome 134.0.6998.89,,,12-03-2025 13:36:37,12-03-2025 13:36:39,2.070s,PASSED
+"navigateToUrl(""https://katalon-demo-cura.herokuapp.com/"")",Chrome 134.0.6998.89,,,12-03-2025 13:36:39,12-03-2025 13:36:41,2.568s,PASSED
+"click(findTestObject(""Object Repository/Page_CURA Healthcare Service/a_Make Appointment""))",Chrome 134.0.6998.89,,,12-03-2025 13:36:41,12-03-2025 13:36:42,0.611s,PASSED
+"click(findTestObject(""Object Repository/Page_CURA Healthcare Service/button_Login""))",Chrome 134.0.6998.89,,,12-03-2025 13:36:42,12-03-2025 13:36:43,0.981s,PASSED
