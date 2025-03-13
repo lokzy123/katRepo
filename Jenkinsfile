@@ -10,23 +10,22 @@ def defaultSuitePath = "Test Suites/Login_TestSuite"
 def defaultCollectionPath = "Test Suites/Test Suite Collection 1"
 def defaultBrowser = "Chrome"
 def defaultProfile = "default"
-// def defaultReportPath = "Reports/**/Login_TestSuite/**/"
+def executeCollection = false
 
 // Prefix variables for PR description to parse details
-def testSuiteVar = "TestSuite : "
-def testSuiteCollectionVar = "TestSuiteCollectionPath :"
-def exeProfileVar = "Exe Profile :"
-def browserTypeVar = "Browser Type : "
-def reportsPathVar = "Reports Path : "
+// def testSuiteVar = "TestSuite : "
+// def testSuiteCollectionVar = "TestSuiteCollectionPath :"
+// def exeProfileVar = "Exe Profile :"
+// def browserTypeVar = "Browser Type : "
+// def reportsPathVar = "Reports Path : "
 
 // Variables to store data retrieved from the PR
 def receivedJson = ''
 def commentUrl = ''
-def testSuitePath = ''
-def testSuiteCollectionPath = ''
-def browser = ''
-def profile = ''
-def prDescription = ''
+// def testSuitePath = ''
+// def testSuiteCollectionPath = ''
+// def browser = ''
+// def profile = ''
 // def reportsPath = ''
 
 pipeline {
@@ -51,7 +50,7 @@ pipeline {
                         // Parse the JSON response
                         receivedJson = readJSON text: responseBody
                         commentUrl = receivedJson.comments_url
-                        prDescription = receivedJson.body
+                        // prDescription = receivedJson.body
 
                         // Mark the flag to execute the build
                         executeBuild = true
@@ -78,53 +77,10 @@ pipeline {
                         def responseBody = response.content.toString()
                         receivedJson = readJSON text: responseBody
                         commentUrl = receivedJson.comments_url[0]
-                        prDescription = receivedJson.body
-                        prDescription = prDescription[0]
+                        // prDescription = receivedJson.body
+                        // prDescription = prDescription[0]
                         // Set executeBuild flag to true
                         executeBuild = true
-                    }
-                }
-            }
-        }
-
-        stage('Get Execution Details') {
-            steps {
-                script {
-                    if (executeBuild) {
-                        if(!prDescription.equals(null)){
-                            echo "prDescription : ${prDescription}"
-                        def lines = prDescription.split("\n|\r")
-                        for (def line : lines) {
-                            echo "Line: ${line}"
-                            if (!line.isEmpty()) {
-                                // Parsing test suite path, collection path, browser, and profile from PR description
-                                if (line.contains(testSuiteVar) && !(line.split(":")[1].trim()).equals('')) {
-                                    testSuitePath = line.split(":")[1].trim()
-                                    echo "testSuitePath: ${testSuitePath}"
-                                } else if (line.contains(testSuiteCollectionVar) && !(line.split(":")[1].trim()).equals('')) {
-                                    testSuiteCollectionPath = line.split(":")[1].trim()
-                                    echo "testSuiteCollectionPath: ${testSuiteCollectionPath}"
-                                } else if (line.contains(exeProfileVar) && !(line.split(":")[1].trim()).equals('')) {
-                                    profile = line.split(":")[1].trim()
-                                    echo "Execution Profile: ${profile}"
-                                } else if (line.contains(browserTypeVar) && !(line.split(":")[1].trim()).equals('')) {
-                                    browser = line.split(":")[1].trim()
-                                    echo "Browser: ${browser}"
-                                } else if (line.contains("defaultCollection")) {
-                                    defaultCollection = true
-                                    echo "Default collection is set to true"
-                                } else if (line.contains(reportsPathVar) && !(line.split(":")[1].trim()).equals('')){
-                                    reportsPath = line.split(":")[1].trim()
-                                }
-                            }
-                        }
-                        }
-
-                        // Echo values for debug purposes
-                        echo "testSuitePath: ${testSuitePath}"
-                        echo "testSuiteCollectionPath: ${testSuiteCollectionPath}"
-                        echo "Execution Profile: ${profile}"
-                        echo "Browser: ${browser}"
                     }
                 }
             }
@@ -134,13 +90,8 @@ pipeline {
             steps {
                 script {
                     if (executeBuild) {
-                        echo "Browser: ${browser}"
                         // Choose which Katalon command to run based on the test suite or collection path
-                        if (!testSuiteCollectionPath.equals("")) {
-                            executeKatalon executeArgs: "-retry=0 -testSuiteCollectionPath=\"${testSuiteCollectionPath}\" -browserType=\"${browser}\" -executionProfile=\"${profile}\" -apiKey=\"b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
-                        } else if (!testSuitePath.equals("")) {
-                            executeKatalon executeArgs: "-retry=0 -testSuitePath=\"${testSuitePath}\" -browserType=\"${browser}\" -executionProfile=\"${profile}\" -apiKey=\"b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
-                        } else if (defaultCollection) {
+                    if (executeCollection) {
                             executeKatalon executeArgs: "-retry=0 -testSuiteCollectionPath=\"${defaultCollectionPath}\" -browserType=\"${defaultBrowser}\" -executionProfile=\"${defaultProfile}\" -apiKey=\"b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
                         } else {
                             executeKatalon executeArgs: "-retry=0 -testSuitePath=\"${defaultSuitePath}\" -browserType=\"${defaultBrowser}\" -executionProfile=\"${defaultProfile}\" -apiKey=\"b844dd8a-1ca5-4002-9b63-a7e7cd7f9b0e\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
@@ -156,24 +107,10 @@ pipeline {
             script {
                 if (executeBuild) {
                     def token = GITHUB_CREDENTIALS_PSW
-                    echo "Comments URL: ${commentUrl}"
 
                     def jobUrl = env.JOB_URL
                     def buildNumber = env.BUILD_NUMBER
 
-                    // def currentReportPath = ''
-                    
-                    // currentReportPath = reportsPath
-                    
-                    // if(reportsPath.equals("")){
-                    //     currentReportPath = defaultReportPath
-                    // }else{
-                    //     currentReportPath = reportsPath
-                    // }
-                    // echo "currentReportPath: ${currentReportPath}"
-                    // echo "reportsPath: ${reportsPath}"
-                    // echo "defaultReportPath: ${defaultReportPath}"
-        
                     // Archive artifacts 
                     archiveArtifacts allowEmptyArchive: true, artifacts: "Reports/**/"
                     
