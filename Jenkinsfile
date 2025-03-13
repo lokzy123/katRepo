@@ -2,8 +2,6 @@
 
 // Flags to execute build and tests
 def executeBuild = false
-// def defaultSuite = false
-// def defaultCollection = false
 
 // Default paths and configurations for the tests
 def defaultSuitePath = "Test Suites/Login_TestSuite"
@@ -12,21 +10,10 @@ def defaultBrowser = "Chrome"
 def defaultProfile = "default"
 def executeCollection = false
 
-// Prefix variables for PR description to parse details
-// def testSuiteVar = "TestSuite : "
-// def testSuiteCollectionVar = "TestSuiteCollectionPath :"
-// def exeProfileVar = "Exe Profile :"
-// def browserTypeVar = "Browser Type : "
-// def reportsPathVar = "Reports Path : "
-
 // Variables to store data retrieved from the PR
 def receivedJson = ''
 def commentUrl = ''
-// def testSuitePath = ''
-// def testSuiteCollectionPath = ''
-// def browser = ''
-// def profile = ''
-// def reportsPath = ''
+
 
 pipeline {
     agent any
@@ -77,8 +64,7 @@ pipeline {
                         def responseBody = response.content.toString()
                         receivedJson = readJSON text: responseBody
                         commentUrl = receivedJson.comments_url[0]
-                        // prDescription = receivedJson.body
-                        // prDescription = prDescription[0]
+                      
                         // Set executeBuild flag to true
                         executeBuild = true
                     }
