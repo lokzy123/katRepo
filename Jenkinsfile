@@ -2,8 +2,8 @@
 
 // Flags to execute build and tests
 def executeBuild = false
-def defaultSuite = false
-def defaultCollection = false
+// def defaultSuite = false
+// def defaultCollection = false
 
 // Default paths and configurations for the tests
 def defaultSuitePath = "Test Suites/Login_TestSuite"
