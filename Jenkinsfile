@@ -39,6 +39,7 @@ pipeline {
                         commentUrl = receivedJson.comments_url
                         // prDescription = receivedJson.body
 
+                        echo "new pR"
                         // Mark the flag to execute the build
                         executeBuild = true
                     }
