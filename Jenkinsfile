@@ -4,7 +4,7 @@
 def executeBuild = false
 
 // Default paths and configurations for the tests
-def defaultSuitePath = "Test Suites/LoginToMMT"
+def defaultSuitePath = "Test Suites/Login_TestSuite"
 def defaultCollectionPath = "Test Suites/Demo Suites/Demo Suite Collections"
 def defaultBrowser = "Chrome"
 def defaultProfile = "default"
