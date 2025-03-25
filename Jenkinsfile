@@ -4,7 +4,7 @@
 def executeBuild = false
 
 // Default paths and configurations for the tests
-def defaultSuitePath = "Test Suites/Demo Katalon Suite"
+def defaultSuitePath = "Test Suites/LoginToMMT"
 def defaultCollectionPath = "Test Suites/Demo Suites/Demo Suite Collections"
 def defaultBrowser = "Chrome"
 def defaultProfile = "default"
