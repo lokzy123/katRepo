@@ -4,8 +4,8 @@
 def executeBuild = false
 
 // Default paths and configurations for the tests
-def defaultSuitePath = "Test Suites/Demo Katalon Suite"
-def defaultCollectionPath = "Test Suites/Demo Suites/Demo Suite Collections"
+def defaultSuitePath = "Test Suites/Test Suite PR01"
+def defaultCollectionPath = "Test Suites/Test Suite Collection PR-01"
 def defaultBrowser = "Chrome"
 def defaultProfile = "default"
 def executeCollection = false
