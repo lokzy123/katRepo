@@ -39,7 +39,6 @@ pipeline {
                         commentUrl = receivedJson.comments_url
                         // prDescription = receivedJson.body
 
-                        echo "new pR"
                         // Mark the flag to execute the build
                         executeBuild = true
                     }
@@ -65,7 +64,6 @@ pipeline {
                         def response = httpRequest url: prApiUrl, acceptType: 'APPLICATION_JSON'
                         def responseBody = response.content.toString()
                         receivedJson = readJSON text: responseBody
-                        echo "receivedJson : ${receivedJson}" 
                         commentUrl = receivedJson.comments_url[0]
                       
                         // Set executeBuild flag to true
@@ -81,9 +79,9 @@ pipeline {
                     if (executeBuild) {
                         // Choose which Katalon command to run based on the test suite or collection path
                     if (executeCollection) {
-                            // executeKatalon executeArgs: "-retry=0 -testSuiteCollectionPath=\"${defaultCollectionPath}\" -browserType=\"${defaultBrowser}\" -executionProfile=\"${defaultProfile}\" -apiKey=\"93644530-8dee-4ffe-8eab-3c468966e869\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
+                            executeKatalon executeArgs: "-retry=0 -testSuiteCollectionPath=\"${defaultCollectionPath}\" -browserType=\"${defaultBrowser}\" -executionProfile=\"${defaultProfile}\" -apiKey=\"93644530-8dee-4ffe-8eab-3c468966e869\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
                         } else {
-                            // executeKatalon executeArgs: "-retry=0 -testSuitePath=\"${defaultSuitePath}\" -browserType=\"${defaultBrowser}\" -executionProfile=\"${defaultProfile}\" -apiKey=\"93644530-8dee-4ffe-8eab-3c468966e869\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
+                            executeKatalon executeArgs: "-retry=0 -testSuitePath=\"${defaultSuitePath}\" -browserType=\"${defaultBrowser}\" -executionProfile=\"${defaultProfile}\" -apiKey=\"93644530-8dee-4ffe-8eab-3c468966e869\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
                         }
                     }
                 }
