@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Test Suite PR01" time="14.187" tests="1" failures="0" errors="0">
+   <testsuite name="Test Suite PR01" tests="1" failures="0" errors="0" time="14.187" skipped="0" timestamp="31-03-2025T14:34:29" hostname="lokeshguppta - 192.168.1.7" id="Test Suites/Test Suite PR01">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform"/>
+         <property name="logFolder" value="/Users/lokeshguppta/Katalon Studio/PR_1/katRepo/Reports/20250331_143426/Test Suite PR01/20250331_143427"/>
+         <property name="logFiles" value="/Users/lokeshguppta/Katalon Studio/PR_1/katRepo/Reports/20250331_143426/Test Suite PR01/20250331_143427/execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="lokeshguppta - 192.168.1.7"/>
+         <property name="os" value="Mac OS X 64bit"/>
+         <property name="katalonVersion" value="10.1.0.223"/>
+         <property name="browser" value="Chrome 134.0.6998.118"/>
+         <property name="hostAddress" value="192.168.1.7"/>
+         <property name="sessionId" value="7b36db4bf3e853b55dcd26968d3237f5"/>
+         <property name="seleniumVersion" value="4.22.0"/>
+         <property name="proxyInformation" value="ProxyInformation { proxyOption=NO_PROXY, proxyServerType=HTTP, username=, password=********, proxyServerAddress=, proxyServerPort=0, executionList=&quot;&quot;, isApplyToDesiredCapabilities=true }"/>
+         <property name="platform" value="Mac OS X"/>
+      </properties>
+      <testcase name="Test Cases/Demo Katalon" time="14.102" classname="Test Cases/Demo Katalon" status="PASSED">
+         <system-out><![CDATA[31-03-2025T14:34:29 - [TEST_CASE][PASSED] - Test Cases/Demo Katalon: Test Cases/Demo Katalon
+
+31-03-2025T14:34:29 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+31-03-2025T14:34:29 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+31-03-2025T14:34:29 - [MESSAGE][INFO] - Action delay is set to 0 milliseconds
+
+31-03-2025T14:34:40 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+31-03-2025T14:34:40 - [TEST_STEP][PASSED] - navigateToUrl("https://katalon-demo-cura.herokuapp.com/"): Navigate to 'https://katalon-demo-cura.herokuapp.com/' successfully
+
+31-03-2025T14:34:42 - [MESSAGE][PASSED] - Navigate to 'https://katalon-demo-cura.herokuapp.com/' successfully
+
+31-03-2025T14:34:42 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_CURA Healthcare Service/a_Make Appointment")): Object: 'Object Repository/Page_CURA Healthcare Service/a_Make Appointment' is clicked on
+
+31-03-2025T14:34:43 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_CURA Healthcare Service/a_Make Appointment' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[31-03-2025T14:34:29 - [TEST_SUITE][PASSED] - Test Suite PR01: Test Cases/Demo Katalon]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>
