@@ -55,7 +55,7 @@ pipeline {
                     echo "Commit Message for ${commitHash}: ${commitMessage}"
 
                     // Check if commit message contains "Execute Job"
-                    if (commitMessage.contains('Execute Job')) {
+                    if (commitMessage.contains('Execute Job') && env.CHANGE_ID) {
                         def branchName = env.CHANGE_BRANCH
                         echo "branchName : ${branchName}"
                         def prApiUrl = "https://api.github.com/repos/lokzy123/katRepo/pulls?head=lokzy123:${branchName}"
