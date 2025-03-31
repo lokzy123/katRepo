@@ -57,7 +57,8 @@ pipeline {
 
                     // Check if commit message contains "Execute Job"
                     if (commitMessage.contains('Execute Job')) {
-                        def branchName = env.GIT_BRANCH
+                        def branchName = env.BRANCH_NAME
+                        echo "branchName : ${branchName}"
                         def prApiUrl = "https://api.github.com/repos/lokzy123/katRepo/pulls?head=lokzy123:${branchName}"
 
                         // Fetch PR details for the branch
@@ -80,9 +81,9 @@ pipeline {
                     if (executeBuild) {
                         // Choose which Katalon command to run based on the test suite or collection path
                     if (executeCollection) {
-                            executeKatalon executeArgs: "-retry=0 -testSuiteCollectionPath=\"${defaultCollectionPath}\" -browserType=\"${defaultBrowser}\" -executionProfile=\"${defaultProfile}\" -apiKey=\"93644530-8dee-4ffe-8eab-3c468966e869\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
+                            // executeKatalon executeArgs: "-retry=0 -testSuiteCollectionPath=\"${defaultCollectionPath}\" -browserType=\"${defaultBrowser}\" -executionProfile=\"${defaultProfile}\" -apiKey=\"93644530-8dee-4ffe-8eab-3c468966e869\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
                         } else {
-                            executeKatalon executeArgs: "-retry=0 -testSuitePath=\"${defaultSuitePath}\" -browserType=\"${defaultBrowser}\" -executionProfile=\"${defaultProfile}\" -apiKey=\"93644530-8dee-4ffe-8eab-3c468966e869\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
+                            // executeKatalon executeArgs: "-retry=0 -testSuitePath=\"${defaultSuitePath}\" -browserType=\"${defaultBrowser}\" -executionProfile=\"${defaultProfile}\" -apiKey=\"93644530-8dee-4ffe-8eab-3c468966e869\" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true", location: '', version: '10.0.1'
                         }
                     }
                 }
