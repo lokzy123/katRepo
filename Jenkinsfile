@@ -64,6 +64,7 @@ pipeline {
                         def response = httpRequest url: prApiUrl, acceptType: 'APPLICATION_JSON'
                         def responseBody = response.content.toString()
                         receivedJson = readJSON text: responseBody
+                        echo "receivedJson : ${receivedJson}" 
                         commentUrl = receivedJson.comments_url[0]
                       
                         // Set executeBuild flag to true
