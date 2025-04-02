@@ -8,7 +8,7 @@ def defaultSuitePath = "Test Suites/Test Suite PR01"
 def defaultCollectionPath = "Test Suites/Test Suite Collection PR-01"
 def defaultBrowser = "Chrome"
 def defaultProfile = "default"
-def executeCollection = false
+def executeCollection = true
 
 // Variables to store data retrieved from the PR
 def receivedJson = ''
